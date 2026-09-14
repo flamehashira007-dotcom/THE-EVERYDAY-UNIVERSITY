@@ -4,16 +4,33 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import MenuOverlay from "./MenuOverlay";
 import Link from "next/link";
+import { useIntro } from "@/context/IntroContext";
 
-const LOGO_YELLOW = "#facc15  ";
+const LOGO_YELLOW = "#facc15";
 const boing = { type: "spring", stiffness: 220, damping: 14, mass: 0.9 } as const;
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const { isIntroActive, introPhase } = useIntro();
+
+  // Hide navbar during frames 1 & 2, then animate down smoothly when curtains open
+  const isHiddenByIntro = isIntroActive && (introPhase === "frame1" || introPhase === "frame2");
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-40 flex items-center justify-between px-6 py-5 md:px-12">
+      <motion.header
+        initial={{ y: 0, opacity: 1 }}
+        animate={{
+          y: isHiddenByIntro ? -100 : 0,
+          opacity: isHiddenByIntro ? 0 : 1,
+        }}
+        transition={{
+          duration: 0.7,
+          ease: [0.16, 1, 0.3, 1],
+          delay: introPhase === "curtain" ? 0.3 : 0,
+        }}
+        className="fixed inset-x-0 top-0 z-40 flex items-center justify-between px-6 py-5 md:px-12"
+      >
         {/* Logo */}
         <Link
           href="/"
@@ -30,7 +47,7 @@ export default function Navbar() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.9 }}
             transition={boing}
-            className="flex h-16 w-16 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white backdrop-blur-md transition-colors hover:border-white/50 hover:bg-white/20"
+            className="flex h-16 w-16 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white backdrop-blur-md transition-colors hover:border-white/50 hover:bg-white/20 cursor-pointer"
           >
             <svg
               className="h-6 w-6"
@@ -45,11 +62,11 @@ export default function Navbar() {
             </svg>
           </motion.button>
         </div>
-      </header>
+      </motion.header>
 
       <AnimatePresence>
         {open && <MenuOverlay onClose={() => setOpen(false)} />}
       </AnimatePresence>
     </>
   );
-}
+}
