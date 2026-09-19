@@ -91,9 +91,9 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.75, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-6 max-w-xl text-center text-sm uppercase tracking-wide text-white/50 md:text-2xl"
+          className="mt-4 sm:mt-6 max-w-xl text-center text-xs sm:text-sm uppercase tracking-widest text-white/70 md:text-2xl font-medium"
         >
-          Where legends speak and dreams take 
+          Where legends speak and dreams take flight
         </motion.p>
 
         {/* Floating Left Purple Badge (p.svg) */}
