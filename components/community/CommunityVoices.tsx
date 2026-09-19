@@ -81,21 +81,21 @@ export default function CommunityVoices() {
   return (
     <section id="voices" className="relative w-full bg-black text-white">
       {/* 1. TOP HEADER */}
-      <div className="w-full px-4 sm:px-8 md:px-12 pt-20 sm:pt-32 md:pt-48 pb-10 sm:pb-16 text-center">
+      <div className="w-full px-4 sm:px-8 md:px-12 pt-12 sm:pt-24 md:pt-32 pb-6 sm:pb-12 text-center">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl sm:text-6xl md:text-7xl lg:text-[5rem] font-serif text-white tracking-tight mb-4 sm:mb-6 leading-[1.05]">
+          <h2 className="text-3xl sm:text-6xl md:text-7xl lg:text-[5rem] font-serif text-white tracking-tight mb-3 sm:mb-6 leading-[1.05]">
             Voices from Our <span className="text-[#facc15]">Listeners</span>
           </h2>
-          <p className="text-sm sm:text-xl md:text-2xl text-neutral-300 leading-relaxed font-light">
+          <p className="text-xs sm:text-lg md:text-xl text-neutral-300 leading-relaxed font-light">
             Hear from listeners who are using the lessons from the podcast to navigate their own journeys with greater wisdom and purpose.
           </p>
         </div>
       </div>
 
       {/* 2. PINNED SCROLL TRACK */}
-      <div ref={scrollTrackRef} className="relative w-full min-h-[220vh]">
-        <div className="sticky top-16 sm:top-24 md:top-28 w-full px-4 sm:px-8 md:px-12 pb-12 sm:pb-16">
-          <div className="relative overflow-hidden rounded-[2rem] sm:rounded-[3rem] border border-white/10 shadow-2xl bg-[#0a0a0a] w-full min-h-[520px] sm:min-h-[680px] md:min-h-[760px] p-4 sm:p-8 md:p-12 lg:p-16 flex flex-col justify-center">
+      <div ref={scrollTrackRef} className="relative w-full min-h-0 sm:min-h-[160vh] md:min-h-[200vh]">
+        <div className="sm:sticky sm:top-24 md:top-28 w-full px-4 sm:px-8 md:px-12 pb-8 sm:pb-14">
+          <div className="relative overflow-hidden rounded-2xl sm:rounded-[2.5rem] border border-white/10 shadow-2xl bg-[#0a0a0a] w-full min-h-0 sm:min-h-[560px] md:min-h-[640px] p-4 sm:p-8 md:p-12 lg:p-14 flex flex-col justify-center">
             {/* Parallax Background */}
             <motion.div style={{ y: bgY, scale: bgScale }} className="absolute -inset-y-16 inset-x-0 z-0 pointer-events-none">
               <img
@@ -107,7 +107,7 @@ export default function CommunityVoices() {
             </motion.div>
 
             {/* Inset Glassmorphic Dark Container */}
-            <div className="relative z-10 w-full max-w-7xl mx-auto rounded-2xl sm:rounded-[2rem] border border-white/20 bg-black/60 backdrop-blur-2xl p-4 sm:p-8 md:p-12 shadow-[0_8px_32px_0_rgba(0,0,0,0.55)] divide-y divide-white/15">
+            <div className="relative z-10 w-full max-w-7xl mx-auto rounded-xl sm:rounded-[1.75rem] border border-white/20 bg-black/60 backdrop-blur-2xl p-4 sm:p-8 md:p-10 shadow-[0_8px_32px_0_rgba(0,0,0,0.55)] divide-y divide-white/15">
               {/* ROW 1: Marcus Vance */}
               <div
                 onClick={() => setManualActiveIndex(manualActiveIndex === 0 ? null : 0)}
