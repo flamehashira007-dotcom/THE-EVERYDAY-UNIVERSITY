@@ -6,9 +6,8 @@ import Link from "next/link";
 
 const QUICK_LINKS = [
   { label: "Home", href: "/" },
-  { label: "Episodes", href: "/Episodes" },
-  { label: "The Classrooms", href: "#Classrooms" },
-  { label: "Community", href: "#Community" },
+  { label: "The Classrooms", href: "/classrooms" },
+  { label: "Community", href: "/community" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
@@ -42,7 +41,7 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as const }}
-          className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-6 sm:gap-4"
+          className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5 sm:gap-4"
         >
           {QUICK_LINKS.map((item) => (
             <motion.div
@@ -302,7 +301,7 @@ export default function Footer() {
             {/* Bottom Button: Pill "Take Me There" */}
             <motion.div whileHover={{ scale: 1.015 }} whileTap={{ scale: 0.985 }}>
               <Link
-                href="/Episodes"
+                href="/classrooms"
                 className="flex h-12 w-full items-center justify-center rounded-full border border-black bg-transparent text-xs font-black uppercase tracking-wider text-black transition-all hover:bg-black hover:text-white"
               >
                 <span className="font-bold tracking-widest text-black transition-colors hover:text-white">

@@ -38,13 +38,17 @@ export default function Hero() {
         className="absolute inset-0 z-0 opacity-70"
         style={{ y: videoY, scale: videoScale }}
       >
-        <iframe
-          src="https://player.vimeo.com/video/1047927010?badge=0&autopause=0&player_id=0&autoplay=1&loop=1&muted=1&background=1&app_id=58479"
-          className="absolute top-1/2 left-1/2 h-[56.25vw] min-h-full w-[177.77vh] min-w-full -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-          frameBorder="0"
-          allow="autoplay; fullscreen; picture-in-picture"
-          title="Hero background video"
-        />
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className="h-full w-full object-cover"
+        >
+          <source src="/30 secound vali Final.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </motion.div>
 
       <div className="absolute inset-0 z-10 bg-linear-to-t from-black via-black/30 to-black/60" />

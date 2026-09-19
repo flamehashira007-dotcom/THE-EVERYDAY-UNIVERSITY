@@ -15,10 +15,10 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
     setLenis(lenis);
 
     let rafId: number;
-    const raf = (time: number) => {
+    function raf(time: number) {
       lenis.raf(time);
       rafId = requestAnimationFrame(raf);
-    };
+    }
     rafId = requestAnimationFrame(raf);
 
     return () => {

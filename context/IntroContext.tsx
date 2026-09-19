@@ -7,9 +7,10 @@ import { getLenis } from "@/lib/lenis";
 interface IntroContextType {
   isIntroActive: boolean;
   isCurtainOpening: boolean;
-  introPhase: "idle" | "frame1" | "frame2" | "curtain" | "finished";
-  setIntroPhase: (phase: "idle" | "frame1" | "frame2" | "curtain" | "finished") => void;
+  introPhase: "idle" | "playing" | "curtain" | "finished";
+  setIntroPhase: (phase: "idle" | "playing" | "curtain" | "finished") => void;
   finishIntro: () => void;
+  skipIntro: () => void;
 }
 
 const IntroContext = createContext<IntroContextType>({
@@ -18,12 +19,13 @@ const IntroContext = createContext<IntroContextType>({
   introPhase: "idle",
   setIntroPhase: () => {},
   finishIntro: () => {},
+  skipIntro: () => {},
 });
 
 export const IntroProvider = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
   const [introPhase, setIntroPhase] = useState<
-    "idle" | "frame1" | "frame2" | "curtain" | "finished"
+    "idle" | "playing" | "curtain" | "finished"
   >("idle");
   const [isIntroActive, setIsIntroActive] = useState<boolean>(false);
 
@@ -36,7 +38,7 @@ export const IntroProvider = ({ children }: { children: React.ReactNode }) => {
 
     if (isHomePage && !hasSeen) {
       setIsIntroActive(true);
-      setIntroPhase("frame1");
+      setIntroPhase("playing");
       // Lock native scrolling and Lenis smooth scroll
       document.body.style.overflow = "hidden";
       const lenis = getLenis();
@@ -56,6 +58,10 @@ export const IntroProvider = ({ children }: { children: React.ReactNode }) => {
     if (lenis) lenis.start();
   }, []);
 
+  const skipIntro = useCallback(() => {
+    setIntroPhase("curtain");
+  }, []);
+
   const isCurtainOpening = introPhase === "curtain";
 
   return (
@@ -66,6 +72,7 @@ export const IntroProvider = ({ children }: { children: React.ReactNode }) => {
         introPhase,
         setIntroPhase,
         finishIntro,
+        skipIntro,
       }}
     >
       {children}
@@ -74,3 +81,4 @@ export const IntroProvider = ({ children }: { children: React.ReactNode }) => {
 };
 
 export const useIntro = () => useContext(IntroContext);
+

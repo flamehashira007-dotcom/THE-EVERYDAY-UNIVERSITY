@@ -75,7 +75,7 @@ export default function CtaSection() {
               className="mt-8 flex flex-wrap items-center justify-center gap-4"
             >
               <Link
-                href="/Episodes"
+                href="/classrooms"
                 className="flex items-center justify-center rounded-full bg-[#facc15] px-8 py-3.5 text-xs font-black uppercase tracking-wider text-black shadow-lg transition-all hover:scale-105 hover:bg-white"
               >
                 Watch the Latest Episode

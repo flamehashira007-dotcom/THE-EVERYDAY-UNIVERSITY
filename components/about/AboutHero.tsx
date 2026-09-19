@@ -55,7 +55,7 @@ export default function AboutHero() {
             Meet the Host
           </a>
           <Link
-            href="/#Classrooms"
+            href="/classrooms"
             className="flex w-full sm:w-auto items-center justify-center rounded-full border border-white/25 bg-white/5 px-8 py-4 text-xs font-bold uppercase tracking-wider text-white backdrop-blur-md transition-all hover:border-[#facc15] hover:text-[#facc15] text-center"
           >
             Explore the Stories

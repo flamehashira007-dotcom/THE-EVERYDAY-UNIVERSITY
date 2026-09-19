@@ -28,7 +28,7 @@ const reelData: ReelItem[] = [
     category: "STORY",
     badgeBg: "#facc15",
     badgeText: "#000000",
-    thumbnail: "https://i.ytimg.com/vi/89bQ8zM8gHE/hqdefault.jpg",
+    thumbnail: "https://i.ytimg.com/vi/89bQ8zM8gHE/maxresdefault.jpg",
   },
   {
     id: "r2",
@@ -40,7 +40,7 @@ const reelData: ReelItem[] = [
     category: "LEADERSHIP",
     badgeBg: "#facc15",
     badgeText: "#000000",
-    thumbnail: "https://i.ytimg.com/vi/SXUQ_OimIMY/hqdefault.jpg",
+    thumbnail: "https://i.ytimg.com/vi/SXUQ_OimIMY/maxresdefault.jpg",
   },
   {
     id: "r3",
@@ -52,7 +52,7 @@ const reelData: ReelItem[] = [
     category: "MINDSET",
     badgeBg: "#facc15",
     badgeText: "#000000",
-    thumbnail: "https://i.ytimg.com/vi/JduHAq-DizE/hqdefault.jpg",
+    thumbnail: "https://i.ytimg.com/vi/JduHAq-DizE/maxresdefault.jpg",
   },
   {
     id: "r4",
@@ -64,7 +64,7 @@ const reelData: ReelItem[] = [
     category: "BUSINESS",
     badgeBg: "#facc15",
     badgeText: "#000000",
-    thumbnail: "https://i.ytimg.com/vi/cPXHUyKm8DU/hqdefault.jpg",
+    thumbnail: "https://i.ytimg.com/vi/cPXHUyKm8DU/maxresdefault.jpg",
   },
   {
     id: "r5",
@@ -76,7 +76,7 @@ const reelData: ReelItem[] = [
     category: "FINANCE",
     badgeBg: "#facc15",
     badgeText: "#000000",
-    thumbnail: "https://i.ytimg.com/vi/hWNwEsCyPHg/hqdefault.jpg",
+    thumbnail: "https://i.ytimg.com/vi/hWNwEsCyPHg/maxresdefault.jpg",
   },
   {
     id: "r6",
@@ -88,7 +88,7 @@ const reelData: ReelItem[] = [
     category: "HEALTH",
     badgeBg: "#facc15",
     badgeText: "#000000",
-    thumbnail: "https://i.ytimg.com/vi/1w7bRHWpYIw/hqdefault.jpg",
+    thumbnail: "https://i.ytimg.com/vi/1w7bRHWpYIw/maxresdefault.jpg",
   },
 ];
 

@@ -13,8 +13,8 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const { isIntroActive, introPhase } = useIntro();
 
-  // Hide navbar during frames 1 & 2, then animate down smoothly when curtains open
-  const isHiddenByIntro = isIntroActive && (introPhase === "frame1" || introPhase === "frame2");
+  // Hide navbar during intro frames, then animate down smoothly when curtains open
+  const isHiddenByIntro = isIntroActive && introPhase !== "curtain" && introPhase !== "finished";
 
   return (
     <>

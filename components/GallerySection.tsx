@@ -9,37 +9,37 @@ const ITEMS = [
     title: "THE PODCAST\nEPISODES",
     image:
       "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=1200&auto=format&fit=crop",
-    href: "/Episodes",
+    href: "/classrooms",
   },
   {
     title: "BUSINESS &\nENTREPRENEURSHIP",
     image:
       "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1200&auto=format&fit=crop",
-    href: "#business",
+    href: "/classrooms",
   },
   {
     title: "THE PROFESSORS\n(GUESTS)",
     image:
       "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1200&auto=format&fit=crop",
-    href: "#professors",
+    href: "/about",
   },
   {
     title: "EDUCATION &\nLESSONS",
     image:
       "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1200&auto=format&fit=crop",
-    href: "#education",
+    href: "/classrooms",
   },
   {
     title: "TECHNOLOGY &\nINNOVATION",
     image:
       "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1200&auto=format&fit=crop",
-    href: "#technology",
+    href: "/classrooms",
   },
   {
     title: "COMMUNITY &\nENTERTAINMENT",
     image:
       "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1200&auto=format&fit=crop",
-    href: "#Community",
+    href: "/community",
   },
 ];
 

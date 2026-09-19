@@ -16,11 +16,10 @@ interface LinkItem {
 }
 
 const links: LinkItem[] = [
-  { id: "01", label: "Episodes", href: "/Episodes" },
-  { id: "02", label: "The Classrooms", href: "#Classrooms" },
-  { id: "03", label: "Community", href: "#Community" },
-  { id: "04", label: "About", href: "/about" },
-  { id: "05", label: "Contact", href: "/contact" },
+  { id: "01", label: "The Classrooms", href: "/classrooms" },
+  { id: "02", label: "Community", href: "/community" },
+  { id: "03", label: "About", href: "/about" },
+  { id: "04", label: "Contact", href: "/contact" },
 ];
 
 const socialLinks = [
