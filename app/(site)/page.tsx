@@ -7,6 +7,7 @@ import GallerySection from "@/components/GallerySection";
 import SpeakingShowcase from "@/components/SpeakingShowcase";
 import CtaSection from "@/components/CtaSection";
 import ContactModal from "@/components/ContactModal";
+import ContactCalEmbed from "@/components/contact/ContactCalEmbed";
 
 const RootPage = () => {
   return (
@@ -16,9 +17,10 @@ const RootPage = () => {
       <ShortShowcase />
       <AboutSection />
       <GallerySection />
-      <CtaSection />
-      <ContactModal />
       <SpeakingShowcase />
+      <CtaSection />
+      <ContactCalEmbed />
+      <ContactModal />
     </>
   );
 };

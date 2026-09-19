@@ -43,7 +43,7 @@ const ITEMS = [
   },
 ];
 
-/* Each gallery item uses its own scroll-driven parallax */
+/* Each gallery item uses smooth GPU transforms */
 function GalleryItem({ item, index }: { item: typeof ITEMS[number]; index: number }) {
   const itemRef = useRef<HTMLAnchorElement>(null);
 
@@ -52,29 +52,28 @@ function GalleryItem({ item, index }: { item: typeof ITEMS[number]; index: numbe
     offset: ["start end", "end start"],
   });
 
-  /* Alternate speed: odd items move faster for a staggered depth effect */
-  const speed = index % 2 === 0 ? 30 : 50;
+  /* Parallax for desktop screens only to prevent mobile stutter */
+  const speed = index % 2 === 0 ? 25 : 40;
   const imageY = useTransform(scrollYProgress, [0, 1], [-speed, speed]);
-  const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.08, 1, 1.03]);
+  const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.06, 1, 1.03]);
 
   return (
     <motion.a
       ref={itemRef}
       key={item.title}
       href={item.href}
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, amount: 0.1 }}
       transition={{
-        duration: 0.7,
-        delay: (index % 3) * 0.1,
-        ease: [0.16, 1, 0.3, 1],
+        duration: 0.5,
+        delay: (index % 3) * 0.08,
       }}
-      className="group relative aspect-square overflow-hidden block"
+      className="group relative aspect-square overflow-hidden block bg-neutral-950 will-change-transform"
     >
-      {/* Background image — parallax y offset + scale */}
+      {/* Background image — Desktop parallax, Mobile static optimized */}
       <motion.div
-        className="absolute inset-0"
+        className="absolute inset-0 transform-gpu"
         style={{ y: imageY, scale: imageScale }}
       >
         <Image
@@ -82,19 +81,19 @@ function GalleryItem({ item, index }: { item: typeof ITEMS[number]; index: numbe
           alt={item.title.replace("\n", " ")}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-cover transition-all duration-700 ease-out group-hover:grayscale"
+          className="object-cover transition-all duration-500 ease-out group-hover:grayscale"
         />
       </motion.div>
 
       {/* Dark gradient overlay */}
-      <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/20 to-black/40 transition-opacity duration-500 group-hover:from-black/90" />
+      <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/20 to-black/40 transition-opacity duration-500 group-hover:from-black/90 pointer-events-none" />
 
       {/* Title & Arrow Hover */}
-      <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
+      <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8 pointer-events-none">
         <span className="mb-4 inline-block w-fit text-4xl md:text-5xl leading-none text-white opacity-0 -translate-x-4 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-x-0 group-hover:text-[#facc15]">
           →
         </span>
-        <h3 className="font-bebas-neue text-2xl uppercase leading-[0.95] tracking-tight text-white transition-colors duration-300 group-hover:text-[#facc15] sm:text-3xl md:text-4xl whitespace-pre-line">
+        <h3 className="font-bebas-neue text-2xl uppercase leading-[0.95] tracking-tight text-white transition-colors duration-300 group-hover:text-[#facc15] sm:text-3xl md:text-4xl whitespace-pre-line drop-shadow-md">
           {item.title}
         </h3>
       </div>

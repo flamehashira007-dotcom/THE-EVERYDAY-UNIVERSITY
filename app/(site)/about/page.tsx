@@ -8,6 +8,7 @@ import {
   AboutGuests,
 } from "@/components/about";
 import CtaSection from "@/components/CtaSection";
+import ContactCalEmbed from "@/components/contact/ContactCalEmbed";
 import ContactModal from "@/components/ContactModal";
 
 export const metadata: Metadata = {
@@ -39,8 +40,9 @@ export default function AboutPage() {
       {/* 5. Guests & Testimonials */}
       {/* <AboutGuests /> */}
 
-      {/* 6. CTA & Contact Form */}
+      {/* 6. CTA & Calendar Strategy Call */}
       <CtaSection />
+      <ContactCalEmbed />
       <ContactModal />
     </main>
   );

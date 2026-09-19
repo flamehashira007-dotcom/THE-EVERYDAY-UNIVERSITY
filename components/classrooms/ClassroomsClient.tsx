@@ -7,10 +7,12 @@ import {
   ClassroomFeed,
   ClassroomQuotes,
   ClassroomSpotlight,
-  ClassroomModal,
   type PillarId,
   type ClassroomEpisode,
 } from "@/components/classrooms";
+import ClassroomModal from "./ClassroomModal";
+import ContactCalEmbed from "@/components/contact/ContactCalEmbed";
+import ContactModal from "@/components/ContactModal";
 import { client } from "@/sanity/lib/client";
 import { VIDEOS_QUERY, type SanityVideo } from "@/sanity/lib/queries";
 import { extractYouTubeId } from "@/lib/youtube";
@@ -104,18 +106,19 @@ export default function ClassroomsClient({
         onPlayVideo={handlePlayVideo}
       />
 
-      {/* 4. Guest Wisdom Quotes Carousel */}
-      {/* <ClassroomQuotes /> */}
+      {/* 4. Live Booking Strategy Call Scheduler */}
+      <ContactCalEmbed />
 
-      
-
-      {/* Interactive YouTube Video Player Modal */}
+      {/* 5. Interactive YouTube Video Player Modal */}
       <ClassroomModal
         isOpen={modalState.isOpen}
         onClose={() => setModalState({ isOpen: false, videoUrl: "", title: "" })}
         videoUrl={modalState.videoUrl}
         title={modalState.title}
       />
+
+      {/* 6. Global Contact Modal */}
+      <ContactModal />
     </main>
   );
 }

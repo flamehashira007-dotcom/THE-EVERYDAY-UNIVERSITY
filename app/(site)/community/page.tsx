@@ -8,6 +8,7 @@ import {
   CommunityFaq,                               
 } from "@/components/community";
 import ContactModal from "@/components/ContactModal";
+import ContactCalEmbed from "@/components/contact/ContactCalEmbed";
 
 export const metadata: Metadata = {
   title: "The Everyday Community | The Everyday University",
@@ -36,7 +37,10 @@ export default function CommunityPage() {
       {/* 8. Frequently Asked Questions */}
       <CommunityFaq />
 
-      {/* 8. Global Contact Modal */}
+      {/* 9. Live Calendar Intro Booking */}
+      <ContactCalEmbed />
+
+      {/* 10. Global Contact Modal */}
       <ContactModal />
     </main>
   );
