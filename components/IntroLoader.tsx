@@ -204,7 +204,7 @@ export default function IntroLoader() {
         initial={{ y: 0 }}
         animate={{ y: isOpening ? "-100%" : 0 }}
         transition={{ duration: 1.05, ease: easeCustom }}
-        className="absolute top-0 inset-x-0 h-1/2 bg-[#08080a] border-b border-yellow-500/20 shadow-2xl z-10"
+        className="absolute top-0 inset-x-0 h-1/2 bg-[#08080a] shadow-2xl z-10"
       >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_100%,rgba(250,204,21,0.06),transparent_70%)]" />
       </motion.div>
@@ -214,7 +214,7 @@ export default function IntroLoader() {
         initial={{ y: 0 }}
         animate={{ y: isOpening ? "100%" : 0 }}
         transition={{ duration: 1.05, ease: easeCustom }}
-        className="absolute bottom-0 inset-x-0 h-1/2 bg-[#08080a] border-t border-yellow-500/20 shadow-2xl z-10"
+        className="absolute bottom-0 inset-x-0 h-1/2 bg-[#08080a] shadow-2xl z-10"
       >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(250,204,21,0.06),transparent_70%)]" />
       </motion.div>
@@ -432,15 +432,6 @@ export default function IntroLoader() {
                       </motion.span>
                     ))}
                   </h1>
-
-                  <div className="mt-8 sm:mt-10 h-1 w-44 sm:w-64 bg-zinc-800/80 rounded-full overflow-hidden p-[1px] border border-white/10">
-                    <motion.div
-                      initial={{ width: "0%" }}
-                      animate={{ width: "100%" }}
-                      transition={{ duration: 1.5, ease: "easeInOut" }}
-                      className="h-full bg-gradient-to-r from-yellow-400 via-[#facc15] to-amber-300 rounded-full shadow-[0_0_12px_#facc15]"
-                    />
-                  </div>
                 </div>
               )}
 
@@ -470,16 +461,6 @@ export default function IntroLoader() {
                       “Where legends speak and dreams take flight.”
                     </p>
                   </motion.div>
-
-                  {/* Loading / Ready indicator line */}
-                  <div className="mt-8 sm:mt-10 h-1.5 w-52 sm:w-72 bg-zinc-800/80 rounded-full overflow-hidden p-[1px] border border-yellow-500/20 shadow-[0_0_15px_rgba(250,204,21,0.2)]">
-                    <motion.div
-                      initial={{ width: "0%" }}
-                      animate={{ width: "100%" }}
-                      transition={{ duration: 1.8, ease: "easeInOut" }}
-                      className="h-full bg-gradient-to-r from-yellow-400 via-[#facc15] to-amber-300 rounded-full shadow-[0_0_15px_#facc15]"
-                    />
-                  </div>
                 </div>
               )}
             </motion.div>

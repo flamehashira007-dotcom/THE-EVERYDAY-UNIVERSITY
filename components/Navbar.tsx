@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import MenuOverlay from "./MenuOverlay";
 import Link from "next/link";
@@ -11,7 +11,18 @@ const boing = { type: "spring", stiffness: 220, damping: 14, mass: 0.9 } as cons
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const { isIntroActive, introPhase } = useIntro();
+
+  // Track scroll position to toggle glassmorphism background
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Hide navbar during intro frames, then animate down smoothly when curtains open
   const isHiddenByIntro = isIntroActive && introPhase !== "curtain" && introPhase !== "finished";
@@ -29,7 +40,11 @@ export default function Navbar() {
           ease: [0.16, 1, 0.3, 1],
           delay: introPhase === "curtain" ? 0.3 : 0,
         }}
-        className="fixed inset-x-0 top-0 z-40 flex items-center justify-between px-6 py-5 md:px-12"
+        className={`fixed inset-x-0 top-0 z-40 flex items-center justify-between px-6 transition-all duration-300 md:px-12 ${
+          isScrolled
+            ? "bg-black/65 backdrop-blur-2xl border-b border-white/10 py-3 sm:py-4 shadow-[0_8px_32px_0_rgba(0,0,0,0.45)]"
+            : "bg-transparent border-b border-transparent py-5 md:py-6"
+        }`}
       >
         {/* Logo */}
         <Link
@@ -47,10 +62,12 @@ export default function Navbar() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.9 }}
             transition={boing}
-            className="flex h-16 w-16 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white backdrop-blur-md transition-colors hover:border-white/50 hover:bg-white/20 cursor-pointer"
+            className={`flex items-center justify-center rounded-full border border-white/30 bg-white/10 text-white backdrop-blur-md transition-all hover:border-white/50 hover:bg-white/20 cursor-pointer ${
+              isScrolled ? "h-12 w-12 sm:h-14 sm:w-14" : "h-14 w-14 sm:h-16 sm:w-16"
+            }`}
           >
             <svg
-              className="h-6 w-6"
+              className="h-5 w-5 sm:h-6 sm:w-6"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"

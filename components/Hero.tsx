@@ -32,7 +32,7 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative h-screen w-full overflow-hidden bg-black text-white"
+      className="relative min-h-[100dvh] h-[100dvh] w-full overflow-hidden bg-black text-white"
     >
       <motion.div
         className="absolute inset-0 z-0 opacity-70"
