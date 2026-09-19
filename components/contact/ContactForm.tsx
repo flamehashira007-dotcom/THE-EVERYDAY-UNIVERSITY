@@ -4,7 +4,12 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2, Sparkles } from "lucide-react";
 
-const INQUIRY_TYPES = ["Guest Pitch", "Sponsorship", "General Inquiry"];
+const INQUIRY_TYPES = [
+  "Pitch a Guest / Story Idea",
+  "Sponsorship & Partnerships",
+  "Community Collaboration",
+  "General Inquiry",
+];
 
 const SOCIALS = [
   { label: "YouTube", href: "https://www.youtube.com/@TheEverydayUniversity" },
@@ -65,14 +70,34 @@ export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          company,
+          email,
+          inquiryType,
+          message,
+        }),
+      });
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        alert("Failed to send message. Please try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Failed to send message. Please try again.");
+    } finally {
       setIsSubmitting(false);
-      setSubmitted(true);
-    }, 600);
+    }
   };
+
 
   const underline =
     "border-b border-neutral-400 bg-transparent px-2 pb-1 text-black placeholder-neutral-400 outline-none transition focus:border-black font-semibold";

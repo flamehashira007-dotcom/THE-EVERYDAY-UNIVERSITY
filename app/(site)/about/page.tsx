@@ -1,6 +1,5 @@
-"use client";
-
 import React from "react";
+import type { Metadata } from "next";
 import {
   AboutHero,
   AboutShowcaseImage,
@@ -10,6 +9,17 @@ import {
 } from "@/components/about";
 import CtaSection from "@/components/CtaSection";
 import ContactModal from "@/components/ContactModal";
+
+export const metadata: Metadata = {
+  title: "About Our Story & Mission",
+  description:
+    "Learn about Dasi and the philosophy behind The Everyday University. Exploring the classrooms that don't have four walls and the teachers of everyday life.",
+  openGraph: {
+    title: "About Our Story & Mission | The Everyday University",
+    description:
+      "Learn about Dasi and the philosophy behind The Everyday University.",
+  },
+};
 
 export default function AboutPage() {
   return (
@@ -27,7 +37,7 @@ export default function AboutPage() {
       <AboutValues />
 
       {/* 5. Guests & Testimonials */}
-      <AboutGuests />
+      {/* <AboutGuests /> */}
 
       {/* 6. CTA & Contact Form */}
       <CtaSection />

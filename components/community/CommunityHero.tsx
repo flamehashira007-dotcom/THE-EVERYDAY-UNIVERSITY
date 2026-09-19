@@ -8,10 +8,11 @@ export default function CommunityHero() {
     <section className="relative min-h-[100dvh] h-screen w-full overflow-hidden bg-black text-white flex flex-col justify-center sm:justify-end">
       {/* Background Image */}
       <img
-        src="https://cdn.prod.website-files.com/671f6145048d666039477704/67503deccc42b344a2208634_hero_about-compressed.avif"
+        src="/Copy of IMG_3921.JPG"
         alt="The Everyday Community"
-        className="absolute inset-0 h-full w-full object-cover object-[80%_center] sm:object-center pointer-events-none select-none brightness-75"
+        className="absolute inset-0 h-full w-full object-cover object-center pointer-events-none select-none brightness-75"
       />
+
 
       {/* Subtle depth overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-black/60 pointer-events-none" />

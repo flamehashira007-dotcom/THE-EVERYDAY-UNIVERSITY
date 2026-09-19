@@ -1,8 +1,20 @@
 import React from "react";
+import type { Metadata } from "next";
 import { ClassroomsClient, type ClassroomEpisode } from "@/components/classrooms";
 import { client } from "@/sanity/lib/client";
 import { VIDEOS_QUERY, type SanityVideo } from "@/sanity/lib/queries";
 import { extractYouTubeId } from "@/lib/youtube";
+
+export const metadata: Metadata = {
+  title: "Classrooms Without Walls",
+  description:
+    "Explore masterclasses, video lessons, and deep-dive wisdom extracted from every episode of The Everyday University podcast.",
+  openGraph: {
+    title: "Classrooms Without Walls | The Everyday University",
+    description:
+      "Explore masterclasses and life lessons from every episode.",
+  },
+};
 
 export const revalidate = 60; // Revalidate every 60 seconds
 

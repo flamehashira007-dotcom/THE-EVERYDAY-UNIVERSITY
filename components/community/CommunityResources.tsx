@@ -17,8 +17,7 @@ const RESOURCES: ResourceCard[] = [
     title: "Episode Show\nNotes",
     subtitle:
       "Access our detailed show notes, key takeaways, and actionable lessons from every guest. Never miss a critical insight.",
-    image:
-      "https://images.unsplash.com/photo-1629909614456-6b1c5c94cecc?q=80&w=1000&auto=format&fit=crop",
+    image: "/Copy of IMG_2957.JPG",
     hasQuoteBadge: true,
   },
   {
@@ -26,18 +25,17 @@ const RESOURCES: ResourceCard[] = [
     title: "Deep-Dive\nDiscussions",
     subtitle:
       "Engage in community workshops and discussions focused on entrepreneurship, storytelling, and personal growth.",
-    image:
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1000&auto=format&fit=crop",
+    image: "/Copy of IMG_2963.JPG",
   },
   {
     id: "community-insights",
     title: "Community\nInsights",
     subtitle:
       "Insights, resources, and takeaways crowdsourced directly from fellow listeners in our channels.",
-    image:
-      "https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=1000&auto=format&fit=crop",
+    image: "/Copy of IMG_3731.JPG",
   },
 ];
+
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 

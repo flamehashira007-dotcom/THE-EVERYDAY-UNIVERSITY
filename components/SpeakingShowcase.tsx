@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -13,35 +13,36 @@ interface EventImage {
 const EVENT_IMAGES: EventImage[] = [
   {
     id: "1",
-    src: "https://images.unsplash.com/photo-1544531585-9847b68c8c86?q=80&w=1000&auto=format&fit=crop",
-    alt: "Keynote speaking on stage in auditorium",
+    src: "/Copy of IMG_2145.JPG",
+    alt: "The Everyday University live session and keynote",
   },
   {
     id: "2",
-    src: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1000&auto=format&fit=crop",
-    alt: "Large corporate event audience and keynote stage",
+    src: "/Copy of IMG_2357.JPG",
+    alt: "The Everyday University auditorium speaking",
   },
   {
     id: "3",
-    src: "https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?q=80&w=1000&auto=format&fit=crop",
-    alt: "Panel discussion with microphone interview",
+    src: "/Copy of IMG_2957.JPG",
+    alt: "The Everyday University masterclass discussions",
   },
   {
     id: "4",
-    src: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=1000&auto=format&fit=crop",
-    alt: "Keynote presentation at podium with stage screen",
+    src: "/Copy of IMG_2963.JPG",
+    alt: "The Everyday University leadership stage",
   },
   {
     id: "5",
-    src: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=1000&auto=format&fit=crop",
-    alt: "Auditorium keynote speech with live lighting",
+    src: "/Copy of IMG_3731.JPG",
+    alt: "The Everyday University event presentation",
   },
   {
     id: "6",
-    src: "https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=1000&auto=format&fit=crop",
-    alt: "Leadership conference fireside chat",
+    src: "/Copy of IMG_3921.JPG",
+    alt: "The Everyday University workshop panel",
   },
 ];
+
 
 /* Larger, high-contrast partner logos in site palette */
 function NyuLogo() {
@@ -151,88 +152,22 @@ function ForbesLogo() {
 }
 
 export default function SpeakingShowcase() {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
-
-  const checkScroll = () => {
-    if (!scrollContainerRef.current) return;
-    const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
-    setCanScrollLeft(scrollLeft > 10);
-    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
-  };
-
-  useEffect(() => {
-    const el = scrollContainerRef.current;
-    if (!el) return;
-    checkScroll();
-    el.addEventListener("scroll", checkScroll);
-    window.addEventListener("resize", checkScroll);
-    return () => {
-      el.removeEventListener("scroll", checkScroll);
-      window.removeEventListener("resize", checkScroll);
-    };
-  }, []);
-
-  const handleScroll = (direction: "left" | "right") => {
-    if (!scrollContainerRef.current) return;
-    const amount = scrollContainerRef.current.clientWidth * 0.65;
-    scrollContainerRef.current.scrollBy({
-      left: direction === "left" ? -amount : amount,
-      behavior: "smooth",
-    });
-  };
-
   return (
     <section className="relative w-full bg-black pt-28 text-white sm:py-36 lg:py-44 overflow-hidden border-t border-white/10">
       {/* ------------------------------------------------------------- */}
-      {/* 1. TOP CAROUSEL: Keynote & Speaking Stage Images              */}
+      {/* 1. TOP CAROUSEL: Keynote & Speaking Stage Images (Autoscroll) */}
       {/* ------------------------------------------------------------- */}
-      <div className="relative w-full">
-        {/* Left Arrow Button */}
-        <button
-          onClick={() => handleScroll("left")}
-          disabled={!canScrollLeft}
-          aria-label="Previous image"
-          className={`absolute left-4 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-[#121216]/90 text-white shadow-2xl backdrop-blur-md transition-all sm:left-8 sm:h-14 sm:w-14 ${
-            canScrollLeft
-              ? "opacity-90 hover:scale-110 hover:border-[#facc15] hover:bg-[#facc15] hover:text-black hover:opacity-100"
-              : "opacity-30 cursor-not-allowed"
-          }`}
-        >
-          <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
-          </svg>
-        </button>
+      <div className="group relative w-full overflow-hidden">
+        {/* Soft edge fades matching dark background */}
+        <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-16 bg-linear-to-r from-black via-black/80 to-transparent sm:w-36" />
+        <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-16 bg-linear-to-l from-black via-black/80 to-transparent sm:w-36" />
 
-        {/* Right Arrow Button */}
-        <button
-          onClick={() => handleScroll("right")}
-          disabled={!canScrollRight}
-          aria-label="Next image"
-          className={`absolute right-4 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-[#121216]/90 text-white shadow-2xl backdrop-blur-md transition-all sm:right-8 sm:h-14 sm:w-14 ${
-            canScrollRight
-              ? "opacity-90 hover:scale-110 hover:border-[#facc15] hover:bg-[#facc15] hover:text-black hover:opacity-100"
-              : "opacity-30 cursor-not-allowed"
-          }`}
-        >
-          <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
-          </svg>
-        </button>
-
-        {/* Scrollable image row with larger card sizes */}
-        <div
-          ref={scrollContainerRef}
-          className="flex w-full gap-5 overflow-x-auto px-6 py-4 scrollbar-none sm:gap-8 sm:px-12"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-        >
-          {EVENT_IMAGES.map((img) => (
-            <motion.div
-              key={img.id}
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-              className="relative h-72 w-92 shrink-0 overflow-hidden rounded-2xl border border-white/10 shadow-2xl sm:h-96 sm:w-135 sm:rounded-3xl lg:h-[440px] lg:w-160"
+        {/* Infinite looping autoscroll track */}
+        <div className="flex w-fit items-center gap-5 py-4 sm:gap-8 [animation:marquee-showcase_35s_linear_infinite] group-hover:[animation-play-state:paused]">
+          {[...EVENT_IMAGES, ...EVENT_IMAGES].map((img, idx) => (
+            <div
+              key={`${img.id}-${idx}`}
+              className="relative h-72 w-92 shrink-0 overflow-hidden rounded-2xl border border-white/10 shadow-2xl transition-all duration-300 hover:scale-[1.02] hover:border-[#facc15]/50 sm:h-96 sm:w-135 sm:rounded-3xl lg:h-[440px] lg:w-160"
             >
               <Image
                 src={img.src}
@@ -242,20 +177,20 @@ export default function SpeakingShowcase() {
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
 
+
       {/* ------------------------------------------------------------- */}
-      {/* 2. BOTTOM MARQUEE: Partner & Client Logos Strip (Larger Tags) */}
+      {/* 2. BOTTOM MARQUEE: Partner & Client Logos Strip (Commented out for now) */}
       {/* ------------------------------------------------------------- */}
+      {/* 
       <div className="relative mt-20 w-full overflow-hidden sm:mt-28">
-        {/* Soft edge fades matching dark background */}
         <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-16 bg-linear-to-r from-black via-black/80 to-transparent sm:w-36" />
         <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-16 bg-linear-to-l from-black via-black/80 to-transparent sm:w-36" />
 
-        {/* Infinite scrolling track with large logos */}
         <div className="flex w-fit items-center gap-16 sm:gap-24">
           <motion.div
             animate={{ x: ["0%", "-50%"] }}
@@ -287,6 +222,7 @@ export default function SpeakingShowcase() {
           </motion.div>
         </div>
       </div>
+      */}
     </section>
   );
 }

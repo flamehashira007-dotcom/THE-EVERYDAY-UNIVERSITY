@@ -38,10 +38,12 @@ export default function CommunityForum() {
                 className="absolute inset-0 w-full h-full will-change-transform"
               >
                 <img
-                  src="/6735f1bb835823b06517dc34_image_2.avif"
+                  src="/drive_img_1.jpg"
                   alt="Join the conversation"
                   className="w-full h-full object-cover object-center brightness-90"
                 />
+
+
               </motion.div>
 
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30 pointer-events-none" />

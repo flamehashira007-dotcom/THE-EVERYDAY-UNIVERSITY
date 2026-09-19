@@ -153,15 +153,16 @@ export default function AboutSection() {
         </motion.div>
       </motion.div>
 
-      {/* Steven Cutout — pinned to bottom */}
+      {/* Dasi Cutout — pinned flush to bottom */}
       <motion.div
         style={{ x: stevenX, scale: stevenScale }}
-        className="pointer-events-none absolute -bottom-1 right-0 z-20 h-[42vh] w-full sm:h-[50vh] sm:w-[80%] lg:right-[4%] lg:h-[78vh] lg:w-[42%] xl:right-[8%] xl:w-[40%]"
+        className="pointer-events-none absolute bottom-0 right-0 z-20 h-[52vh] w-full sm:h-[62vh] sm:w-[85%] lg:right-[2%] lg:h-[88vh] lg:w-[48%] xl:right-[4%] xl:w-[45%]"
       >
         <Image
-          src="/steven-cutout1.png"
-          alt="Steven Bartlett"
+          src="/dasi.png"
+          alt="Dasi - The Everyday University"
           fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 85vw, 48vw"
           className="object-contain object-bottom"
           priority
         />

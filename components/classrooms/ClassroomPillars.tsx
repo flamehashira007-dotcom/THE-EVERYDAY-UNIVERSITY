@@ -45,8 +45,7 @@ const PILLARS: StoryPillarItem[] = [
       "Learn from founders, investors, and builders who have navigated the highs and lows of creating something from nothing.",
     buttonLabel: "Enter the School",
     badge: "Foundational Blueprints",
-    image:
-      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1200&auto=format&fit=crop",
+    image: "/Copy of IMG_2145.JPG",
     accent: "#facc15",
     accentGlow: "rgba(250, 204, 21, 0.35)",
   },
@@ -60,8 +59,7 @@ const PILLARS: StoryPillarItem[] = [
       "Stories of overcoming failure, enduring loss, and the powerful lessons learned from starting over.",
     buttonLabel: "Enter the School",
     badge: "Unfiltered Wisdom",
-    image:
-      "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=1200&auto=format&fit=crop",
+    image: "/Copy of IMG_2357.JPG",
     accent: "#fbbf24",
     accentGlow: "rgba(251, 191, 36, 0.35)",
   },
@@ -75,12 +73,12 @@ const PILLARS: StoryPillarItem[] = [
       "Wisdom from creators, artists, storytellers, and community leaders shaping our world.",
     buttonLabel: "Enter the School",
     badge: "Cultural Identity & Legacy",
-    image:
-      "https://images.unsplash.com/photo-1544198365-f5d60b6d8190?q=80&w=1200&auto=format&fit=crop",
+    image: "/Copy of IMG_3921.JPG",
     accent: "#f59e0b",
     accentGlow: "rgba(245, 158, 11, 0.35)",
   },
 ];
+
 
 interface PillarCardProps {
   item: StoryPillarItem;

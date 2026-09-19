@@ -22,7 +22,7 @@ export default function CommunityPage() {
       <CommunityHero />
 
       {/* 2. Voices from Our Listeners (Testimonials) */}
-      <CommunityVoices />
+      {/* <CommunityVoices /> */}
 
       {/* 3. Listener Resources (Resource Cards) */}
       <CommunityResources />

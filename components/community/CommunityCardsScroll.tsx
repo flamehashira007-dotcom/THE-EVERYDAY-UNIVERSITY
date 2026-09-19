@@ -165,7 +165,7 @@ export default function CommunityCardsScroll() {
         <motion.div style={{ x }} className="flex h-screen">
           {/* Slide 1: The Podcast Community in your Pocket */}
           <HeroSlide
-            image="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1400&auto=format&fit=crop"
+            image="/Copy of IMG_2145.JPG"
             heading={
               <>
                 Your podcast community <br />
@@ -181,7 +181,7 @@ export default function CommunityCardsScroll() {
 
           {/* Slide 3: Live Meetups and Listener Discussions */}
           <HeroSlide
-            image="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=1400&auto=format&fit=crop"
+            image="/Copy of IMG_2357.JPG"
             heading={
               <>
                 Live Meetups and <br className="hidden sm:inline" />
@@ -191,6 +191,7 @@ export default function CommunityCardsScroll() {
             description="Never miss a community gathering with our real-time updates on WhatsApp and Telegram, featuring live discussion rooms, virtual roundtables, and listener insights."
             growProgress={hero2Grow}
           />
+
         </motion.div>
       </div>
     </section>

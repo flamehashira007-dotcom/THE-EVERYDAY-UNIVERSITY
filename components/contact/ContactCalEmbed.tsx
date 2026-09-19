@@ -15,28 +15,29 @@ import {
 } from "lucide-react";
 
 const TIME_SLOTS = [
-  "09:30 AM",
-  "11:00 AM",
+  "12:00 PM",
   "01:30 PM",
   "03:00 PM",
   "04:30 PM",
   "06:00 PM",
+  "07:30 PM",
 ];
 
 const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 export default function ContactCalEmbed() {
-  // Calendar State
-  const [selectedDate, setSelectedDate] = useState<number>(18);
-  const [selectedMonth, setSelectedMonth] = useState<number>(8); // 8 = September
-  const [selectedYear] = useState<number>(2026);
-  const [selectedTime, setSelectedTime] = useState<string | null>("11:00 AM");
+  // Calendar State - dynamic based on today's date
+  const today = new Date();
+  const [selectedDate, setSelectedDate] = useState<number>(today.getDate());
+  const [selectedMonth, setSelectedMonth] = useState<number>(today.getMonth());
+  const [selectedYear, setSelectedYear] = useState<number>(today.getFullYear());
+  const [selectedTime, setSelectedTime] = useState<string | null>("12:00 PM");
   const [bookingStep, setBookingStep] = useState<"select" | "details" | "confirmed">("select");
 
   // Form State
   const [clientName, setClientName] = useState("");
   const [clientEmail, setClientEmail] = useState("");
-  const [clientTopic, setClientTopic] = useState("Podcast Launch Strategy");
+  const [clientTopic, setClientTopic] = useState("Pitch a Guest / Story Idea");
   const [isBooking, setIsBooking] = useState(false);
 
   const monthNames = [
@@ -44,29 +45,69 @@ export default function ContactCalEmbed() {
     "July", "August", "September", "October", "November", "December"
   ];
 
-  // Days calculation for September 2026 (Starts on Tuesday = index 2, 30 days)
-  const totalDays = 30;
-  const startDayIndex = 2; // Tuesday
+  // Dynamic days calculation for currently selected month & year
+  const startDayIndex = new Date(selectedYear, selectedMonth, 1).getDay();
+  const totalDays = new Date(selectedYear, selectedMonth + 1, 0).getDate();
+
+  const handlePrevMonth = () => {
+    if (selectedMonth === 0) {
+      setSelectedMonth(11);
+      setSelectedYear((y) => y - 1);
+    } else {
+      setSelectedMonth((m) => m - 1);
+    }
+  };
+
+  const handleNextMonth = () => {
+    if (selectedMonth === 11) {
+      setSelectedMonth(0);
+      setSelectedYear((y) => y + 1);
+    } else {
+      setSelectedMonth((m) => m + 1);
+    }
+  };
+
+  const isDateInPast = (dayNum: number) => {
+    const startOfToday = new Date();
+    startOfToday.setHours(0, 0, 0, 0);
+    const targetDate = new Date(selectedYear, selectedMonth, dayNum, 23, 59, 59);
+    return targetDate < startOfToday;
+  };
 
   const handleDateClick = (day: number) => {
     setSelectedDate(day);
     setSelectedTime(null);
   };
 
-  const handleBookingSubmit = (e: React.FormEvent) => {
+  const handleBookingSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsBooking(true);
-    setTimeout(() => {
+    try {
+      await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: clientName,
+          email: clientEmail,
+          category: clientTopic,
+          message: `Scheduled Intro Call: ${monthNames[selectedMonth]} ${selectedDate}, ${selectedYear} at ${selectedTime} EST`,
+          source: "Calendar Booking",
+        }),
+      });
+    } catch (err) {
+      console.error("Booking sync error:", err);
+    } finally {
       setIsBooking(false);
       setBookingStep("confirmed");
-    }, 700);
+    }
   };
 
   const resetBooking = () => {
     setBookingStep("select");
-    setSelectedTime("11:00 AM");
+    setSelectedTime("12:00 PM");
     setClientName("");
     setClientEmail("");
+    setClientTopic("Pitch a Guest / Story Idea");
   };
 
   return (
@@ -83,7 +124,7 @@ export default function ContactCalEmbed() {
           >
             <CalendarIcon className="h-3.5 w-3.5 text-[#facc15]" />
             <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#facc15]">
-              Direct Strategy Booking
+              PARTNERSHIPS & PITCHES
             </span>
           </motion.div>
 
@@ -94,7 +135,7 @@ export default function ContactCalEmbed() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-3xl font-extrabold tracking-tight text-white sm:text-5xl"
           >
-            Schedule a Strategy Call
+            Let’s Work Together
           </motion.h2>
 
           <motion.p
@@ -104,7 +145,7 @@ export default function ContactCalEmbed() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-base text-neutral-400"
           >
-            Select a date and time slot below for an initial 30-minute broadcast consultation with our executive team.
+            Select a date and time slot below for an initial 30-minute intro call with our team to discuss guest pitches, sponsorships, or community collaborations.
           </motion.p>
 
           {/* Quick Perks */}
@@ -116,7 +157,7 @@ export default function ContactCalEmbed() {
               <Video className="h-4 w-4 text-[#facc15]" /> Google Meet / Zoom
             </span>
             <span className="inline-flex items-center gap-1.5">
-              <ShieldCheck className="h-4 w-4 text-[#facc15]" /> 100% Confidential
+              <ShieldCheck className="h-4 w-4 text-[#facc15]" /> Podcast Inquiries
             </span>
           </div>
         </div>
@@ -133,15 +174,16 @@ export default function ContactCalEmbed() {
           <div className="mb-8 flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-5">
             <div className="flex items-center gap-2 text-xs font-medium text-neutral-300">
               <span className="h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="font-bold text-white">Live Broadcast Calendar</span>
+              <span className="font-bold text-white">Live Booking Calendar</span>
               <span className="text-neutral-600">•</span>
-              <span className="text-neutral-400">Timezone: Europe/London (GMT+1)</span>
+              <span className="text-neutral-400">Timezone: America/New_York (EST)</span>
             </div>
             <div className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-neutral-300">
               <Sparkles className="h-3 w-3 text-[#facc15]" />
-              <span>Free 30-min strategy review</span>
+              <span>Intro & Collaboration Call</span>
             </div>
           </div>
+
 
           <AnimatePresence mode="wait">
             {bookingStep === "confirmed" ? (
@@ -159,11 +201,12 @@ export default function ContactCalEmbed() {
 
                 <div className="space-y-3 max-w-md">
                   <h3 className="text-3xl font-black text-white">
-                    Strategy Call Confirmed!
+                    Intro Call Confirmed!
                   </h3>
                   <p className="text-sm leading-relaxed text-neutral-300">
-                    We&rsquo;ve scheduled your 30-minute consultation with <span className="text-white font-bold">{clientName || "our team"}</span>.
+                    We&rsquo;ve scheduled your 30-minute intro call with <span className="text-white font-bold">{clientName || "our team"}</span>.
                   </p>
+
 
                   <div className="rounded-2xl border border-white/10 bg-white/5 p-4 text-left space-y-2 text-xs text-neutral-300 mt-4">
                     <div className="flex items-center justify-between">
@@ -174,12 +217,13 @@ export default function ContactCalEmbed() {
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-neutral-400">Time:</span>
-                      <span className="font-bold text-[#facc15]">{selectedTime} (GMT+1)</span>
+                      <span className="font-bold text-[#facc15]">{selectedTime} EST</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-neutral-400">Location:</span>
                       <span className="font-bold text-white">Google Meet (Link emailed)</span>
                     </div>
+
                     <div className="flex items-center justify-between">
                       <span className="text-neutral-400">Confirmation Sent To:</span>
                       <span className="font-bold text-white">{clientEmail || "Your email"}</span>
@@ -248,17 +292,17 @@ export default function ContactCalEmbed() {
 
                   <div className="space-y-1.5">
                     <label className="block text-xs font-bold uppercase tracking-wider text-neutral-300">
-                      What is the primary focus of your podcast?
+                      Primary Reason For Call *
                     </label>
                     <select
                       value={clientTopic}
                       onChange={(e) => setClientTopic(e.target.value)}
                       className="w-full rounded-xl border border-white/10 bg-[#121218] px-4 py-3 text-sm text-white outline-none focus:border-[#facc15]"
                     >
-                      <option value="Podcast Launch Strategy">Podcast Launch Strategy</option>
-                      <option value="Full Production & Audio Editing">Full Production & Audio Editing</option>
-                      <option value="Show Reboot & Audience Growth">Show Reboot & Audience Growth</option>
-                      <option value="Executive Coaching & Hosting">Executive Coaching & Hosting</option>
+                      <option value="Pitch a Guest / Story Idea">Pitch a Guest / Story Idea</option>
+                      <option value="Sponsorship & Partnerships">Sponsorship & Partnerships</option>
+                      <option value="Community Collaboration">Community Collaboration</option>
+                      <option value="General Inquiry">General Inquiry</option>
                     </select>
                   </div>
                 </div>
@@ -298,15 +342,15 @@ export default function ContactCalEmbed() {
                     <div className="flex items-center gap-2">
                       <button
                         type="button"
-                        onClick={() => setSelectedMonth((m) => (m === 0 ? 11 : m - 1))}
-                        className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/5 text-neutral-400 hover:text-white transition-colors"
+                        onClick={handlePrevMonth}
+                        className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/5 text-neutral-400 hover:text-white transition-colors cursor-pointer"
                       >
                         <ChevronLeft className="h-4 w-4" />
                       </button>
                       <button
                         type="button"
-                        onClick={() => setSelectedMonth((m) => (m === 11 ? 0 : m + 1))}
-                        className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/5 text-neutral-400 hover:text-white transition-colors"
+                        onClick={handleNextMonth}
+                        className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/5 text-neutral-400 hover:text-white transition-colors cursor-pointer"
                       >
                         <ChevronRight className="h-4 w-4" />
                       </button>
@@ -329,23 +373,22 @@ export default function ContactCalEmbed() {
                       <div key={`empty-${i}`} className="h-10" />
                     ))}
 
-                    {/* Active Days */}
+                    {/* Active Days (Monday - Sunday Every Day) */}
                     {Array.from({ length: totalDays }).map((_, idx) => {
                       const dayNum = idx + 1;
-                      const isPast = dayNum < 15;
+                      const isPast = isDateInPast(dayNum);
                       const isSelected = selectedDate === dayNum;
-                      const isWeekend = (idx + startDayIndex) % 7 === 0 || (idx + startDayIndex) % 7 === 6;
 
                       return (
                         <button
                           key={dayNum}
                           type="button"
-                          disabled={isPast || isWeekend}
+                          disabled={isPast}
                           onClick={() => handleDateClick(dayNum)}
                           className={`flex h-10 w-full items-center justify-center rounded-xl text-xs font-bold transition-all ${
                             isSelected
                               ? "bg-[#facc15] text-black shadow-lg font-extrabold scale-105"
-                              : isPast || isWeekend
+                              : isPast
                               ? "text-neutral-600 opacity-40 cursor-not-allowed"
                               : "border border-white/5 bg-white/[0.03] text-neutral-200 hover:border-[#facc15]/50 hover:bg-white/10 cursor-pointer"
                           }`}
@@ -354,6 +397,8 @@ export default function ContactCalEmbed() {
                         </button>
                       );
                     })}
+
+
                   </div>
                 </div>
 

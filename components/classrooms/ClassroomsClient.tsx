@@ -105,7 +105,7 @@ export default function ClassroomsClient({
       />
 
       {/* 4. Guest Wisdom Quotes Carousel */}
-      <ClassroomQuotes />
+      {/* <ClassroomQuotes /> */}
 
       
 

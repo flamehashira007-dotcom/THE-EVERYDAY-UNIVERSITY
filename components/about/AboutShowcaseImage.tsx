@@ -10,9 +10,10 @@ interface AboutShowcaseImageProps {
 }
 
 export default function AboutShowcaseImage({
-  src = "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2000&auto=format&fit=crop",
+  src = "/drive_img_2.jpg",
   alt = "MC DASI - The Everyday University",
 }: AboutShowcaseImageProps) {
+
   return (
     <section className="relative w-full px-6 pb-24 md:px-12 lg:px-16">
       <motion.div

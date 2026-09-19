@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { getLenis } from "@/lib/lenis";
 
 const QUICK_LINKS = [
   { label: "Home", href: "/" },
@@ -21,7 +23,19 @@ const SOCIAL_LINKS = [
 ];
 
 export default function Footer() {
+  const pathname = usePathname();
   const [email, setEmail] = useState("");
+
+  const handleLinkClick = (href: string) => {
+    if (pathname === href) {
+      const lenis = getLenis();
+      if (lenis) {
+        lenis.scrollTo(0, { duration: 1.2 });
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    }
+  };
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -51,6 +65,7 @@ export default function Footer() {
             >
               <Link
                 href={item.href}
+                onClick={() => handleLinkClick(item.href)}
                 className="flex h-14 items-center justify-center rounded-full border border-neutral-200 bg-white px-4 text-xs sm:text-sm font-bold tracking-wide text-black shadow-sm transition-all hover:bg-neutral-100 text-center"
               >
                 {item.label}
@@ -58,6 +73,7 @@ export default function Footer() {
             </motion.div>
           ))}
         </motion.div>
+
 
         {/* ============================================================ */}
         {/* 2. MAIN 2 FEATURE CARDS                                      */}
@@ -324,12 +340,12 @@ export default function Footer() {
         >
           {/* Left: Policy links */}
           <div className="flex flex-wrap items-center gap-6">
-            <a href="#privacy" className="font-semibold text-black transition hover:opacity-70">
+            <Link href="/privacy" className="font-semibold text-black transition hover:opacity-70">
               Privacy Policy
-            </a>
-            <a href="#terms" className="font-semibold text-black transition hover:opacity-70">
+            </Link>
+            <Link href="/terms-and-conditions" className="font-semibold text-black transition hover:opacity-70">
               Terms and Conditions
-            </a>
+            </Link>
           </div>
 
           {/* Center: Copyright */}
