@@ -48,7 +48,7 @@ const cardVariants: Variants = {
     y: 0,
     scale: 1,
     transition: {
-      duration: 0.9,
+      duration: 0.2,
       delay: i * 0.12,
       ease: EASE,
       when: "beforeChildren",

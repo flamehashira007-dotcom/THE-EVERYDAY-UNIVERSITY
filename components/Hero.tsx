@@ -55,7 +55,7 @@ export default function Hero() {
 
       <motion.div
         style={{ y: titleY, opacity: titleOpacity }}
-        className="relative z-20 flex h-full w-full flex-col items-center justify-center px-4 pb-0 md:justify-end md:pb-14"
+        className="relative z-20 flex h-full w-full flex-col items-center justify-center px-4 pb-0 text-center"
       >
 
         <motion.div

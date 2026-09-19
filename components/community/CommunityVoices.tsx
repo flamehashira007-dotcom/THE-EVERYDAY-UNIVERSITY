@@ -89,12 +89,12 @@ export default function CommunityVoices() {
   return (
     <section id="voices" className="relative w-full bg-black text-white">
       {/* 1. TOP HEADER */}
-      <div className="w-full px-4 sm:px-8 md:px-12 pt-16 sm:pt-28 md:pt-36 pb-8 sm:pb-14 text-center">
+      <div className="w-full px-5 sm:px-8 md:px-12 pt-20 sm:pt-28 md:pt-36 pb-8 sm:pb-14 text-center">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl sm:text-6xl md:text-7xl lg:text-[5rem] font-serif text-white tracking-tight mb-3 sm:mb-6 leading-[1.05]">
             Voices from Our <span className="text-[#facc15]">Listeners</span>
           </h2>
-          <p className="text-sm sm:text-xl md:text-2xl text-neutral-300 leading-relaxed font-light">
+          <p className="text-xs sm:text-lg md:text-xl text-neutral-300 leading-relaxed font-light max-w-2xl mx-auto">
             Hear from listeners who are using the lessons from the podcast to navigate their own journeys with greater wisdom and purpose.
           </p>
         </div>
@@ -103,10 +103,10 @@ export default function CommunityVoices() {
       {/* 2. SCROLL TRACK (Desktop: 220vh sticky track | Mobile: Compact Interactive Container) */}
       <div
         ref={scrollTrackRef}
-        className={`relative w-full ${isMobile ? "min-h-0 pb-12" : "min-h-[220vh]"}`}
+        className={`relative w-full ${isMobile ? "min-h-0 pb-16" : "min-h-[220vh]"}`}
       >
-        <div className={`${isMobile ? "relative" : "sticky top-16 sm:top-24 md:top-28"} w-full px-4 sm:px-8 md:px-12 pb-8 sm:pb-16`}>
-          <div className="relative overflow-hidden rounded-3xl sm:rounded-[3rem] border border-white/10 shadow-2xl bg-[#0a0a0a] w-full min-h-0 sm:min-h-[680px] md:min-h-[760px] p-4 sm:p-8 md:p-12 lg:p-16 flex flex-col justify-center">
+        <div className={`${isMobile ? "relative" : "sticky top-16 sm:top-24 md:top-28"} w-full px-4 sm:px-8 md:px-12 pb-10 sm:pb-16`}>
+          <div className="relative overflow-hidden rounded-3xl sm:rounded-[3rem] border border-white/10 shadow-2xl bg-[#0a0a0a] w-full min-h-0 sm:min-h-[680px] md:min-h-[760px] p-5 sm:p-8 md:p-12 lg:p-16 flex flex-col justify-center">
             {/* Parallax Background */}
             <motion.div
               style={isMobile ? undefined : { y: bgY, scale: bgScale }}
@@ -121,17 +121,17 @@ export default function CommunityVoices() {
             </motion.div>
 
             {/* Inset Glassmorphic Dark Container */}
-            <div className="relative z-10 w-full max-w-7xl mx-auto rounded-2xl sm:rounded-[2rem] border border-white/20 bg-black/65 backdrop-blur-2xl p-4 sm:p-8 md:p-12 shadow-[0_8px_32px_0_rgba(0,0,0,0.55)]">
+            <div className="relative z-10 w-full max-w-7xl mx-auto rounded-2xl sm:rounded-[2rem] border border-white/20 bg-black/65 backdrop-blur-2xl p-6 sm:p-8 md:p-12 shadow-[0_8px_32px_0_rgba(0,0,0,0.55)]">
               {/* MOBILE VIEW: Interactive Member Switcher Tabs */}
               {isMobile ? (
-                <div className="space-y-4">
+                <div className="space-y-6">
                   {/* Member Selector Pill Tabs */}
-                  <div className="flex items-center gap-2 p-1 rounded-full bg-white/5 border border-white/10">
+                  <div className="flex items-center gap-2 p-1.5 rounded-full bg-white/5 border border-white/10">
                     {MEMBERS.map((member, idx) => (
                       <button
                         key={member.id}
                         onClick={() => setActiveTabMobile(idx)}
-                        className={`flex-1 py-2 px-3 rounded-full text-xs font-serif font-bold transition-all ${
+                        className={`flex-1 py-2.5 px-4 rounded-full text-xs font-serif font-bold transition-all ${
                           activeTabMobile === idx
                             ? "bg-[#facc15] text-black shadow-md"
                             : "text-neutral-300 hover:text-white"
@@ -151,7 +151,7 @@ export default function CommunityVoices() {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.35 }}
-                        className="pt-2 space-y-4"
+                        className="pt-2 pb-2 space-y-5"
                       >
                         <div className="flex items-center justify-between border-b border-white/10 pb-3">
                           <div>
@@ -162,35 +162,18 @@ export default function CommunityVoices() {
                           </div>
                         </div>
 
-                        <div className="flex flex-col items-center gap-4 pt-1">
-                          <div className="relative group/avatar w-24 h-24 rounded-2xl overflow-hidden bg-yellow-400/20 border border-yellow-400/40 flex items-center justify-center shadow-xl shrink-0">
+                        <div className="flex flex-col items-center gap-5 pt-2">
+                          <div className="relative group/avatar w-28 h-28 rounded-2xl overflow-hidden bg-yellow-400/20 border-2 border-yellow-400/40 flex items-center justify-center shadow-xl shrink-0">
                             <img
                               src={currentMember.avatar}
                               alt={currentMember.name}
                               className="w-full h-full object-cover object-top"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-
-                            {currentMember.videoUrl && (
-                              <button
-                                onClick={() =>
-                                  setSelectedVideo({
-                                    url: currentMember.videoUrl!,
-                                    title: currentMember.name,
-                                  })
-                                }
-                                className="absolute inset-0 m-auto w-10 h-10 rounded-full bg-[#facc15] text-black flex items-center justify-center shadow-lg active:scale-95 transition-transform"
-                                aria-label={`Play ${currentMember.name} story`}
-                              >
-                                <svg className="w-4 h-4 fill-current translate-x-0.5" viewBox="0 0 24 24">
-                                  <path d="M8 5v14l11-7z" />
-                                </svg>
-                              </button>
-                            )}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                           </div>
 
-                          <div className="text-center px-1">
-                            <p className="text-xs text-neutral-200 leading-relaxed font-light italic">
+                          <div className="text-center px-2">
+                            <p className="text-xs sm:text-sm text-neutral-200 leading-relaxed font-light italic">
                               &ldquo;{currentMember.bio}&rdquo;
                             </p>
                           </div>
@@ -234,34 +217,13 @@ export default function CommunityVoices() {
                         className="pt-4 sm:pt-6 pb-2 grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-8 items-center"
                       >
                         <div className="md:col-span-4 flex justify-center md:justify-start">
-                          <div className="relative group/avatar w-28 h-28 sm:w-40 sm:h-40 rounded-2xl sm:rounded-3xl overflow-hidden bg-yellow-400/20 border border-yellow-400/40 flex items-center justify-center shadow-2xl shrink-0">
+                          <div className="relative group/avatar w-28 h-28 sm:w-40 sm:h-40 rounded-2xl sm:rounded-3xl overflow-hidden bg-yellow-400/20 border-2 border-yellow-400/40 flex items-center justify-center shadow-2xl shrink-0">
                             <img
                               src={MEMBERS[0].avatar}
                               alt={MEMBERS[0].name}
                               className="w-full h-full object-cover object-top mix-blend-luminosity group-hover/avatar:mix-blend-normal group-hover/avatar:scale-105 transition-all duration-500"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-
-                            {MEMBERS[0].videoUrl && (
-                              <button
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  setSelectedVideo({
-                                    url: MEMBERS[0].videoUrl!,
-                                    title: MEMBERS[0].name,
-                                  });
-                                }}
-                                className="absolute inset-0 m-auto w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#facc15] hover:bg-white text-black flex items-center justify-center backdrop-blur-md shadow-lg hover:scale-110 transition-all cursor-pointer"
-                                aria-label={`Play ${MEMBERS[0].name} story`}
-                              >
-                                <svg
-                                  className="w-4 h-4 sm:w-5 sm:h-5 fill-current translate-x-0.5"
-                                  viewBox="0 0 24 24"
-                                >
-                                  <path d="M8 5v14l11-7z" />
-                                </svg>
-                              </button>
-                            )}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                           </div>
                         </div>
 
@@ -315,34 +277,13 @@ export default function CommunityVoices() {
                         className="pt-4 sm:pt-6 pb-2 grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-8 items-center"
                       >
                         <div className="md:col-span-4 flex justify-center md:justify-start">
-                          <div className="relative group/avatar w-28 h-28 sm:w-40 sm:h-40 rounded-2xl sm:rounded-3xl overflow-hidden bg-yellow-400/20 border border-yellow-400/40 flex items-center justify-center shadow-2xl shrink-0">
+                          <div className="relative group/avatar w-28 h-28 sm:w-40 sm:h-40 rounded-2xl sm:rounded-3xl overflow-hidden bg-yellow-400/20 border-2 border-yellow-400/40 flex items-center justify-center shadow-2xl shrink-0">
                             <img
                               src={MEMBERS[1].avatar}
                               alt={MEMBERS[1].name}
                               className="w-full h-full object-cover object-top mix-blend-luminosity group-hover/avatar:mix-blend-normal group-hover/avatar:scale-105 transition-all duration-500"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-
-                            {MEMBERS[1].videoUrl && (
-                              <button
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  setSelectedVideo({
-                                    url: MEMBERS[1].videoUrl!,
-                                    title: MEMBERS[1].name,
-                                  });
-                                }}
-                                className="absolute inset-0 m-auto w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#facc15] hover:bg-white text-black flex items-center justify-center backdrop-blur-md shadow-lg hover:scale-110 transition-all cursor-pointer"
-                                aria-label={`Play ${MEMBERS[1].name} story`}
-                              >
-                                <svg
-                                  className="w-4 h-4 sm:w-5 sm:h-5 fill-current translate-x-0.5"
-                                  viewBox="0 0 24 24"
-                                >
-                                  <path d="M8 5v14l11-7z" />
-                                </svg>
-                              </button>
-                            )}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                           </div>
                         </div>
 
