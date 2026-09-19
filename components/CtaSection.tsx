@@ -24,11 +24,11 @@ export default function CtaSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-        className="relative mx-auto w-full overflow-hidden rounded-[2.5rem] min-h-110 sm:min-h-175 flex items-center justify-center border border-white/10 will-change-transform"
+        className="relative mx-auto w-full overflow-hidden rounded-[2.5rem] min-h-110 sm:min-h-175 flex items-center justify-center border border-white/10"
       >
         {/* BG — parallax */}
         <motion.div
-          className="absolute inset-0 z-0 transform-gpu will-change-transform"
+          className="absolute inset-0 z-0"
           style={{ y: bgY, scale: bgScale }}
         >
           <Image src="/3DS.png" alt="" fill priority className="object-cover" />

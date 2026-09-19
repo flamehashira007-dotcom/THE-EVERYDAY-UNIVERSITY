@@ -25,24 +25,24 @@ export default function ClassroomHero({
   onPlayVideo,
 }: ClassroomHeroProps) {
   const sectionRef = useRef<HTMLElement>(null);
-  const nullRef = useRef<HTMLElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Freeze scroll on phones (<768px) to stop background parallax on mobile
-  const [isMobile, setIsMobile] = useState(true);
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
+    const check = () =>
+      setIsMobile(window.innerWidth < 768 || "ontouchstart" in window || navigator.maxTouchPoints > 0);
     check();
     window.addEventListener("resize", check, { passive: true });
     return () => window.removeEventListener("resize", check);
   }, []);
 
   const { scrollYProgress } = useScroll({
-    target: isMobile ? nullRef : sectionRef,
+    target: sectionRef,
     offset: ["start start", "end start"],
   });
 
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.85], [1, 0.4]);
+  // Disable parallax on mobile — JS-driven transforms fight the native GPU scroll compositor
+  const bgY = useTransform(scrollYProgress, [0, 1], isMobile ? ["0%", "0%"] : ["0%", "12%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.85], isMobile ? [1, 1] : [1, 0.4]);
 
   const episode = featuredEpisode || {
     id: "ep-20",
@@ -91,7 +91,7 @@ export default function ClassroomHero({
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[100svh] h-[100svh] md:min-h-[100dvh] md:h-[100dvh] w-full overflow-hidden bg-black text-white flex flex-col justify-end sm:justify-between pt-20 sm:pt-28 pb-6 sm:pb-8 px-4 sm:px-8 md:px-12 gap-4 sm:gap-0"
+      className="relative min-h-[100dvh] h-[100dvh] w-full overflow-hidden bg-black text-white flex flex-col justify-end sm:justify-between pt-20 sm:pt-28 pb-6 sm:pb-8 px-4 sm:px-8 md:px-12 gap-4 sm:gap-0"
     >
       {/* Background Cinematic Visual with Parallax — Max Quality YouTube Thumbnail */}
       <motion.div
@@ -111,7 +111,7 @@ export default function ClassroomHero({
       </motion.div>
 
       {/* Top Left Editorial Header (Sits above card on mobile, top-left on desktop) */}
-      <motion.div style={{ opacity }} className="relative z-10 max-w-3xl will-change-transform">
+      <motion.div style={{ opacity }} className="relative z-10 max-w-3xl">
         <motion.h1
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}

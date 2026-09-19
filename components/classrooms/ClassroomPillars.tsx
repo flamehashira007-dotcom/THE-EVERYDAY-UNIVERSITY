@@ -144,7 +144,7 @@ function PillarCard({
         visibility,
         pointerEvents,
       }}
-      className="absolute inset-0 flex items-center justify-center w-full transform-gpu will-change-transform"
+      className="absolute inset-0 flex items-center justify-center w-full"
     >
       <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 lg:gap-14 items-center">
         {/* Left Info Column */}
@@ -335,7 +335,7 @@ export default function ClassroomPillars({
             <div className="w-32 sm:w-52 h-1 bg-zinc-800 rounded-full overflow-hidden">
               <motion.div
                 style={{ scaleX: scrollYProgress, transformOrigin: "left" }}
-                className="h-full bg-gradient-to-r from-[#facc15] via-[#fbbf24] to-[#f59e0b] will-change-transform transform-gpu"
+                className="h-full bg-gradient-to-r from-[#facc15] via-[#fbbf24] to-[#f59e0b]"
               />
             </div>
           </div>

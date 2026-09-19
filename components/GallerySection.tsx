@@ -73,7 +73,7 @@ function GalleryItem({ item, index }: { item: typeof ITEMS[number]; index: numbe
     >
       {/* Background image — Desktop parallax, Mobile static optimized */}
       <motion.div
-        className="absolute inset-0 transform-gpu will-change-transform"
+        className="absolute inset-0 transform-gpu"
         style={{ y: imageY, scale: imageScale }}
       >
         <Image

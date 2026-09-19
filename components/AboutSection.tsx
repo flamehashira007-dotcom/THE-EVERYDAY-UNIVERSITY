@@ -101,7 +101,7 @@ export default function AboutSection() {
       {/* Content Layout - Text only — parallax y offset */}
       <motion.div
         style={{ y: textY }}
-        className="relative z-10 flex h-full w-full flex-col justify-between px-4 sm:px-8 md:px-12 lg:flex-row lg:items-center lg:px-16 xl:px-24 transform-gpu will-change-transform"
+        className="relative z-10 flex h-full w-full flex-col justify-between px-4 sm:px-8 md:px-12 lg:flex-row lg:items-center lg:px-16 xl:px-24"
       >
         {/* Left Side Text Content */}
         <motion.div
@@ -156,7 +156,7 @@ export default function AboutSection() {
       {/* Dasi Cutout — pinned flush to bottom */}
       <motion.div
         style={{ x: stevenX, scale: stevenScale }}
-        className="pointer-events-none absolute bottom-0 right-0 z-20 h-[52vh] w-full sm:h-[62vh] sm:w-[85%] lg:right-[2%] lg:h-[88vh] lg:w-[48%] xl:right-[4%] xl:w-[45%] transform-gpu will-change-transform"
+        className="pointer-events-none absolute bottom-0 right-0 z-20 h-[52vh] w-full sm:h-[62vh] sm:w-[85%] lg:right-[2%] lg:h-[88vh] lg:w-[48%] xl:right-[4%] xl:w-[45%]"
       >
         <Image
           src="/dasi.png"

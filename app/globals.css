@@ -20,10 +20,26 @@
   }
 }
 
+html {
+  /* Prevent iOS overscroll bounce fighting with JS scroll listeners */
+  overscroll-behavior: none;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  /* Prevent pull-to-refresh / horizontal bounce on mobile */
+  overscroll-behavior: none;
+}
+
+/* Ensure hero sections don't trigger layout shifts from iOS URL bar resize.
+   We use 100dvh in JSX which already handles this, but this prevents any
+   stale 100vh usage from causing reflows that jitter scroll-linked transforms. */
+section[class*="min-h-\\[100dvh\\]"] {
+  /* GPU-composite the entire hero for zero-jank scroll on mobile */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 /* Lenis Recommended CSS */
@@ -55,11 +71,3 @@ html.lenis body {
     transform: translateX(-50%);
   }
 }
-
-/* Promote all CSS-animated elements to their own GPU compositor layers */
-*[style*="animation"],
-*[class*="animate-"] {
-  will-change: transform;
-  backface-visibility: hidden;
-}
-

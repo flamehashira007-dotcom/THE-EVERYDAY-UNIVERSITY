@@ -163,7 +163,7 @@ export default function SpeakingShowcase() {
         <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-16 bg-linear-to-l from-black via-black/80 to-transparent sm:w-36" />
 
         {/* Infinite looping autoscroll track */}
-        <div className="flex w-fit items-center gap-5 py-4 sm:gap-8 [animation:marquee-showcase_35s_linear_infinite] group-hover:[animation-play-state:paused] will-change-transform transform-gpu">
+        <div className="flex w-fit items-center gap-5 py-4 sm:gap-8 [animation:marquee-showcase_35s_linear_infinite] group-hover:[animation-play-state:paused]">
           {[...EVENT_IMAGES, ...EVENT_IMAGES].map((img, idx) => (
             <div
               key={`${img.id}-${idx}`}
