@@ -81,7 +81,7 @@ export default function ClassroomHero({
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[580px] sm:min-h-[660px] h-auto sm:h-screen w-full overflow-hidden bg-black text-white flex flex-col justify-between pt-20 sm:pt-28 pb-6 sm:pb-8 px-4 sm:px-8 md:px-12"
+      className="relative min-h-[640px] sm:min-h-[660px] h-auto sm:h-screen w-full overflow-hidden bg-black text-white flex flex-col justify-between pt-32 xs:pt-36 sm:pt-28 pb-6 sm:pb-8 px-4 sm:px-8 md:px-12"
     >
       {/* Background Cinematic Visual with Parallax — Max Quality YouTube Thumbnail */}
       <motion.div

@@ -298,8 +298,8 @@ export default function ClassroomPillars({
     >
       {/* Sticky Fullscreen Container spanning full width with navbar padding */}
       <div className="sticky top-0 w-full h-screen overflow-hidden flex flex-col justify-between py-4 sm:py-8 px-4 sm:px-8 md:px-12 bg-black">
-        {/* Top Header & Pillar Switcher Navigation */}
-        <div className="relative z-20 w-full flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 sm:gap-4">
+        {/* Top Header & Pillar Switcher Navigation (Desktop / Tablet only) */}
+        <div className="relative z-20 w-full hidden sm:flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 sm:gap-4">
           <div className="flex items-center gap-2 sm:gap-2.5">
             <span className="w-2 h-2 rounded-full bg-[#facc15] shadow-[0_0_10px_#facc15]" />
             <h3 className="text-[11px] sm:text-sm font-mono tracking-widest text-neutral-400 uppercase">
