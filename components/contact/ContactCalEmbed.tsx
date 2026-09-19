@@ -92,23 +92,14 @@ export default function ContactCalEmbed({
           </div>
         </div>
 
-        {/* Official Cal.com Booking Container */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.7 }}
-          className="relative w-full overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#0a0a0f] p-4 sm:p-6 md:p-8 shadow-2xl"
-        >
-          {/* Cal.com Official Embed */}
-          <div className="min-h-[600px] w-full rounded-2xl overflow-hidden bg-[#07070a]">
-            <Cal
-              calLink={calLink}
-              style={{ width: "100%", height: "100%", minHeight: "600px", overflow: "scroll" }}
-              config={{ layout: "month_view", theme: "dark" }}
-            />
-          </div>
-        </motion.div>
+        {/* Native Cal.com Booking Embed */}
+        <div className="w-full">
+          <Cal
+            calLink={calLink}
+            style={{ width: "100%", height: "100%", minHeight: "650px", overflow: "visible" }}
+            config={{ layout: "month_view", theme: "dark" }}
+          />
+        </div>
       </div>
     </section>
   );
