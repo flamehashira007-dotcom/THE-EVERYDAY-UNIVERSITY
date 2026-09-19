@@ -3,8 +3,8 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 
-const TIMELINE = [0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1];
-const X_STOPS = ["0vw", "0vw", "0vw", "-100vw", "-100vw", "-200vw", "-200vw", "-200vw"];
+const TIMELINE = [0, 0.15, 0.45, 0.6, 0.85, 1];
+const X_STOPS = ["0vw", "0vw", "-100vw", "-100vw", "-200vw", "-200vw"];
 
 function HeroSlide({
   image,
@@ -17,10 +17,10 @@ function HeroSlide({
   description: string;
   growProgress: MotionValue<number>;
 }) {
-  const scale = useTransform(growProgress, [0, 1], [0.65, 1]);
-  const radius = useTransform(growProgress, [0, 1], [40, 0]);
-  const textOpacity = useTransform(growProgress, [0.4, 1], [0, 1]);
-  const textY = useTransform(growProgress, [0.4, 1], [30, 0]);
+  const scale = useTransform(growProgress, [0, 1], [0.8, 1]);
+  const radius = useTransform(growProgress, [0, 1], [32, 0]);
+  const textOpacity = useTransform(growProgress, [0.3, 1], [0, 1]);
+  const textY = useTransform(growProgress, [0.3, 1], [25, 0]);
 
   return (
     <div className="relative h-screen w-screen shrink-0 overflow-hidden bg-black">
@@ -156,11 +156,11 @@ export default function CommunityCardsScroll() {
   const x = useTransform(scrollYProgress, TIMELINE, X_STOPS);
 
   const hero1Grow = useTransform(scrollYProgress, [0, 0.15], [0, 1], { clamp: true });
-  const resourceReveal = useTransform(scrollYProgress, [0.3, 0.45], [0, 1], { clamp: true });
-  const hero2Grow = useTransform(scrollYProgress, [0.75, 0.9], [0, 1], { clamp: true });
+  const resourceReveal = useTransform(scrollYProgress, [0.35, 0.55], [0, 1], { clamp: true });
+  const hero2Grow = useTransform(scrollYProgress, [0.75, 0.95], [0, 1], { clamp: true });
 
   return (
-    <section ref={containerRef} className="relative h-[500vh] bg-black">
+    <section ref={containerRef} className="relative h-[250vh] bg-black">
       <div className="sticky top-0 h-screen w-full overflow-hidden bg-black">
         <motion.div style={{ x }} className="flex h-screen">
           {/* Slide 1: The Podcast Community in your Pocket */}
@@ -191,7 +191,6 @@ export default function CommunityCardsScroll() {
             description="Never miss a community gathering with our real-time updates on WhatsApp and Telegram, featuring live discussion rooms, virtual roundtables, and listener insights."
             growProgress={hero2Grow}
           />
-
         </motion.div>
       </div>
     </section>

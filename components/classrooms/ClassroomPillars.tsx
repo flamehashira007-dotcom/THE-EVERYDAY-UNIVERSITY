@@ -107,23 +107,23 @@ function PillarCard({
   let scaleRange: number[];
 
   if (isFirst) {
-    // Card 1: visible from start -> at 0.22 starts disappearing -> strictly 0 by 0.32
-    inputRange = [0, 0.22, 0.32, 1];
+    // Card 1: visible from start -> at 0.18 starts disappearing -> strictly 0 by 0.32
+    inputRange = [0, 0.18, 0.32, 1];
     opacityRange = [1, 1, 0, 0];
-    yRange = [0, 0, -45, -45];
-    scaleRange = [1, 1, 0.95, 0.95];
+    yRange = [0, 0, -40, -40];
+    scaleRange = [1, 1, 0.96, 0.96];
   } else if (isLast) {
-    // Card 3: invisible until 0.62 -> fades in 0.62..0.72 -> remains 1 until end
-    inputRange = [0, 0.62, 0.72, 1];
+    // Card 3: invisible until 0.60 -> fades in 0.60..0.74 -> remains 1 until end
+    inputRange = [0, 0.60, 0.74, 1];
     opacityRange = [0, 0, 1, 1];
-    yRange = [45, 45, 0, 0];
-    scaleRange = [0.95, 0.95, 1, 1];
+    yRange = [40, 40, 0, 0];
+    scaleRange = [0.96, 0.96, 1, 1];
   } else {
-    // Card 2: invisible until 0.26 -> fades in 0.26..0.35 -> stays visible 0.35..0.58 -> fades out 0.58..0.68 -> strictly 0 after
-    inputRange = [0, 0.26, 0.35, 0.58, 0.68, 1];
+    // Card 2: invisible until 0.24 -> fades in 0.24..0.36 -> stays visible 0.36..0.56 -> fades out 0.56..0.68
+    inputRange = [0, 0.24, 0.36, 0.56, 0.68, 1];
     opacityRange = [0, 0, 1, 1, 0, 0];
-    yRange = [45, 45, 0, 0, -45, -45];
-    scaleRange = [0.95, 0.95, 1, 1, 0.95, 0.95];
+    yRange = [40, 40, 0, 0, -40, -40];
+    scaleRange = [0.96, 0.96, 1, 1, 0.96, 0.96];
   }
 
   const opacity = useTransform(scrollYProgress, inputRange, opacityRange);
@@ -292,7 +292,7 @@ export default function ClassroomPillars({
   return (
     <div
       ref={containerRef}
-      className="relative w-full min-h-[300vh] bg-black text-white"
+      className="relative w-full min-h-[220vh] bg-black text-white"
     >
       {/* Sticky Fullscreen Container spanning full width with navbar padding */}
       <div className="sticky top-0 w-full h-screen overflow-hidden flex flex-col justify-between py-4 sm:py-8 px-4 sm:px-8 md:px-12 bg-black">
