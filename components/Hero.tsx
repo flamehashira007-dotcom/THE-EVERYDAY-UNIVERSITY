@@ -32,8 +32,24 @@ export default function Hero() {
       ref={sectionRef}
       className="relative min-h-[100dvh] h-[100dvh] w-full overflow-hidden bg-black text-white"
     >
+      {/* Mobile Video Background — static zero-lag GPU layer */}
+      <div className="md:hidden absolute inset-0 z-0 opacity-70 pointer-events-none">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className="h-full w-full object-cover"
+        >
+          <source src="/30 secound vali Final.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      {/* Desktop Video Background — smooth GPU parallax */}
       <motion.div
-        className="absolute inset-0 z-0 opacity-70 transform-gpu pointer-events-none will-change-transform"
+        className="hidden md:block absolute inset-0 z-0 opacity-70 transform-gpu pointer-events-none will-change-transform"
         style={{ y: videoY }}
       >
         <video
@@ -51,9 +67,32 @@ export default function Hero() {
 
       <div className="absolute inset-0 z-10 bg-linear-to-t from-black via-black/30 to-black/60 pointer-events-none" />
 
+      {/* Mobile Title Container — native zero-lag */}
+      <div className="md:hidden relative z-20 flex h-full w-full flex-col items-center justify-center px-4 pb-0 text-center pointer-events-none">
+        <div className="relative flex flex-col items-center justify-center text-center font-black uppercase leading-[0.82] tracking-tighter select-none">
+          {["THE", "EVERYDAY", "UNIVERSITY"].map((word, i) => (
+            <span
+              key={word}
+              style={{ color: i === 1 ? "#fff" : LOGO_YELLOW }}
+              className={
+                i === 1
+                  ? "text-5xl sm:text-7xl"
+                  : "text-6xl sm:text-8xl"
+              }
+            >
+              {word}
+            </span>
+          ))}
+        </div>
+        <p className="mt-4 max-w-xl text-center text-sm xs:text-base uppercase tracking-wider text-white/90 font-semibold leading-relaxed">
+          Where legends speak and dreams take flight
+        </p>
+      </div>
+
+      {/* Desktop Title Container — smooth parallax */}
       <motion.div
         style={{ y: titleY, opacity: titleOpacity }}
-        className="relative z-20 flex h-full w-full flex-col items-center justify-center px-4 pb-0 text-center transform-gpu will-change-transform"
+        className="hidden md:flex relative z-20 h-full w-full flex-col items-center justify-center px-4 pb-0 text-center transform-gpu will-change-transform"
       >
 
         <motion.div
