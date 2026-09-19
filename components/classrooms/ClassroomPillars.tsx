@@ -282,7 +282,7 @@ export default function ClassroomPillars({
       className="relative w-full min-h-[220vh] bg-black text-white"
     >
       {/* Sticky Fullscreen Showcase Container */}
-      <div className="sticky top-0 w-full h-screen overflow-hidden flex flex-col justify-between py-6 sm:py-8 px-4 sm:px-8 md:px-12 bg-black will-change-transform">
+      <div className="sticky top-0 w-full h-screen overflow-hidden flex flex-col justify-between py-6 sm:py-8 px-4 sm:px-8 md:px-12 bg-black">
         {/* Top Header & Pillar Switcher Navigation */}
         <div className="relative z-20 w-full flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
           <div className="flex items-center gap-2 sm:gap-2.5">

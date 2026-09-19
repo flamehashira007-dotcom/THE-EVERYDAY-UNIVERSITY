@@ -17,16 +17,10 @@ export default function Hero() {
   // null ref — never attached to DOM; used to freeze useScroll on mobile
   const nullRef = useRef<HTMLElement>(null);
 
-  // Detect touch/mobile to disable JS scroll listeners entirely on small screens
-  const [isMobile, setIsMobile] = useState(true); // conservative SSR default
+  // Freeze scroll on true phones only (<768px) — desktop elements are hidden there anyway
+  const [isMobile, setIsMobile] = useState(true);
   useEffect(() => {
-    const check = () => {
-      setIsMobile(
-        "ontouchstart" in window ||
-          navigator.maxTouchPoints > 0 ||
-          window.innerWidth < 1024
-      );
-    };
+    const check = () => setIsMobile(window.innerWidth < 768);
     check();
     window.addEventListener("resize", check, { passive: true });
     return () => window.removeEventListener("resize", check);
@@ -48,7 +42,7 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[100dvh] h-[100dvh] w-full overflow-hidden bg-black text-white"
+      className="relative min-h-[100svh] h-[100svh] md:min-h-[100dvh] md:h-[100dvh] w-full overflow-hidden bg-black text-white"
     >
       {/* ── Mobile Video Background ─────────────────────────────────────
           Static — no JS scroll tracking, fully GPU-isolated compositor layer.
@@ -115,8 +109,8 @@ export default function Hero() {
         className="hidden md:flex relative z-20 h-full w-full flex-col items-center justify-center px-4 pb-0 text-center transform-gpu will-change-transform"
       >
         <motion.div
-          initial={{ opacity: 0, scale: 0.9, y: 30 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className="relative flex flex-col items-center justify-center text-center font-black uppercase leading-[0.82] tracking-tighter select-none"
         >
