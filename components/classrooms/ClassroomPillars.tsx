@@ -3,7 +3,7 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import { getLenis } from "@/lib/lenis";
-import { ArrowUpRight, Sparkles, Radio, ChevronDown } from "lucide-react";
+import { ArrowUpRight, Sparkles, Radio } from "lucide-react";
 
 export type PillarId =
   | "all"
@@ -58,27 +58,26 @@ const PILLARS: StoryPillarItem[] = [
     description:
       "Stories of overcoming failure, enduring loss, and the powerful lessons learned from starting over.",
     buttonLabel: "Enter the School",
-    badge: "Unfiltered Wisdom",
+    badge: "Mental Toughness",
     image: "/Copy of IMG_2357.JPG",
-    accent: "#fbbf24",
-    accentGlow: "rgba(251, 191, 36, 0.35)",
+    accent: "#38bdf8",
+    accentGlow: "rgba(56, 189, 248, 0.35)",
   },
   {
     id: "arts-culture",
     number: "03",
     tag: "DEPARTMENT 03",
-    title: "The School of Arts & Culture",
-    subtitle: "Creators & Storytellers",
+    title: "The School of Arts & Storytelling",
+    subtitle: "Creatives & Cultural Architects",
     description:
-      "Wisdom from creators, artists, storytellers, and community leaders shaping our world.",
+      "Explore the craft of storytelling, media, and creative expression through the lens of visionary leaders.",
     buttonLabel: "Enter the School",
-    badge: "Cultural Identity & Legacy",
+    badge: "Creative Mastery",
     image: "/Copy of IMG_3921.JPG",
-    accent: "#f59e0b",
-    accentGlow: "rgba(245, 158, 11, 0.35)",
+    accent: "#a855f7",
+    accentGlow: "rgba(168, 85, 247, 0.35)",
   },
 ];
-
 
 interface PillarCardProps {
   item: StoryPillarItem;
@@ -100,26 +99,22 @@ function PillarCard({
   const isFirst = index === 0;
   const isLast = index === totalItems - 1;
 
-  // Strict non-overlapping scroll windows to guarantee previous cards are completely invisible
   let inputRange: number[];
   let opacityRange: number[];
   let yRange: number[];
   let scaleRange: number[];
 
   if (isFirst) {
-    // Card 1: visible from start -> at 0.18 starts disappearing -> strictly 0 by 0.32
     inputRange = [0, 0.18, 0.32, 1];
     opacityRange = [1, 1, 0, 0];
     yRange = [0, 0, -40, -40];
     scaleRange = [1, 1, 0.96, 0.96];
   } else if (isLast) {
-    // Card 3: invisible until 0.60 -> fades in 0.60..0.74 -> remains 1 until end
     inputRange = [0, 0.60, 0.74, 1];
     opacityRange = [0, 0, 1, 1];
     yRange = [40, 40, 0, 0];
     scaleRange = [0.96, 0.96, 1, 1];
   } else {
-    // Card 2: invisible until 0.24 -> fades in 0.24..0.36 -> stays visible 0.36..0.56 -> fades out 0.56..0.68
     inputRange = [0, 0.24, 0.36, 0.56, 0.68, 1];
     opacityRange = [0, 0, 1, 1, 0, 0];
     yRange = [40, 40, 0, 0, -40, -40];
@@ -130,7 +125,6 @@ function PillarCard({
   const y = useTransform(scrollYProgress, inputRange, yRange);
   const scale = useTransform(scrollYProgress, inputRange, scaleRange);
 
-  // Guarantee that when opacity is 0, element is completely invisible & non-interactive
   const visibility = useTransform(opacity, (v) => (v > 0.005 ? "visible" : "hidden"));
   const pointerEvents = useTransform(opacity, (v) => (v > 0.5 ? "auto" : "none"));
 
@@ -219,17 +213,13 @@ function PillarCard({
             }}
           >
             <div className="relative w-full h-full rounded-[15px] sm:rounded-[23px] overflow-hidden bg-black">
-              {/* Pillar Image */}
               <img
                 src={item.image}
                 alt={item.title}
                 className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700 opacity-90"
               />
-
-              {/* Dark subtle overlay for contrast */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
 
-              {/* Floating Bottom Card Tag */}
               <div className="absolute bottom-2.5 sm:bottom-4 left-2.5 sm:left-4 right-2.5 sm:right-4 flex items-center justify-between p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-black/80 backdrop-blur-md border border-white/10">
                 <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
                   <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#facc15] shrink-0" />
@@ -255,24 +245,21 @@ export default function ClassroomPillars({
 }: ClassroomPillarsProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Track overall scroll progress through this multi-screen section
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   });
 
-  // Scroll down smoothly to the episodes feed
   const handleScrollToFeed = () => {
     const feedElement = document.getElementById("classroom-feed");
     const lenis = getLenis();
     if (lenis && feedElement) {
-      lenis.scrollTo(feedElement, { offset: -40, duration: 1.2 });
+      lenis.scrollTo(feedElement, { offset: -40, duration: 1.0 });
     } else if (feedElement) {
       feedElement.scrollIntoView({ behavior: "smooth" });
     }
   };
 
-  // Scroll to a specific card in the scroll track
   const handleJumpToCard = (cardIndex: number) => {
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
@@ -283,144 +270,77 @@ export default function ClassroomPillars({
 
     const lenis = getLenis();
     if (lenis) {
-      lenis.scrollTo(targetY, { duration: 1.0 });
+      lenis.scrollTo(targetY, { duration: 0.8 });
     } else {
       window.scrollTo({ top: targetY, behavior: "smooth" });
     }
   };
 
   return (
-    <>
-      {/* ------------------------------------------------------------- */}
-      {/* MOBILE LAYOUT (md:hidden) — Native fluid scrolling without scroll-jack */}
-      {/* ------------------------------------------------------------- */}
-      <section className="block md:hidden w-full bg-black py-12 px-4 space-y-8 border-t border-white/10">
-        <div className="space-y-2 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3.5 py-1 text-xs font-mono text-[#facc15]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#facc15] animate-pulse" />
-            THEMATIC DEPARTMENTS
+    <div
+      ref={containerRef}
+      className="relative w-full min-h-[220vh] bg-black text-white"
+    >
+      {/* Sticky Fullscreen Showcase Container */}
+      <div className="sticky top-0 w-full h-screen overflow-hidden flex flex-col justify-between py-6 sm:py-8 px-4 sm:px-8 md:px-12 bg-black">
+        {/* Top Header & Pillar Switcher Navigation */}
+        <div className="relative z-20 w-full flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
+          <div className="flex items-center gap-2 sm:gap-2.5">
+            <span className="w-2 h-2 rounded-full bg-[#facc15] shadow-[0_0_10px_#facc15]" />
+            <h3 className="text-xs sm:text-sm font-mono tracking-widest text-neutral-400 uppercase">
+              Thematic Departments
+            </h3>
           </div>
-          <h2 className="text-2xl font-black text-white font-serif tracking-tight">
-            Curriculum Pillars
-          </h2>
-          <p className="text-xs text-neutral-400 max-w-sm mx-auto">
-            Choose your focus area and dive into specialized masterclasses.
-          </p>
-        </div>
 
-        <div className="space-y-6">
-          {PILLARS.map((item) => (
-            <div
-              key={`mob-${item.id}`}
-              className="rounded-2xl border border-white/10 bg-zinc-950 p-5 space-y-4 shadow-xl"
-            >
-              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl bg-black border border-white/10">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="h-full w-full object-cover brightness-90"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
-                <span className="absolute top-2.5 left-2.5 rounded-full bg-black/80 backdrop-blur-md px-2.5 py-1 text-[10px] font-mono font-bold text-[#facc15] border border-white/15">
-                  Dept {item.number}
-                </span>
-              </div>
-
-              <div className="space-y-2">
-                <h3 className="text-lg font-bold text-white font-serif">
-                  {item.title}
-                </h3>
-                <p className="text-xs font-semibold" style={{ color: item.accent }}>
-                  {item.subtitle}
-                </p>
-                <p className="text-xs text-neutral-300 leading-relaxed font-light">
-                  {item.description}
-                </p>
-              </div>
-
+          {/* Quick Pillar Jump Pills */}
+          <div className="flex items-center gap-1 sm:gap-1.5 p-1 rounded-full bg-zinc-900/90 border border-white/10 backdrop-blur-md max-w-full overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+            {PILLARS.map((pillar, idx) => (
               <button
-                type="button"
-                onClick={() => {
-                  if (onSelectPillar) onSelectPillar(item.id);
-                  handleScrollToFeed();
-                }}
-                className="w-full flex items-center justify-center gap-2 rounded-full bg-[#facc15] py-2.5 text-xs font-bold text-black uppercase tracking-wider transition-all active:scale-95 cursor-pointer shadow-md"
+                key={pillar.id}
+                onClick={() => handleJumpToCard(idx)}
+                className="px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-medium transition-all duration-300 hover:text-white cursor-pointer flex items-center gap-1.5 text-neutral-400 hover:bg-white/10 whitespace-nowrap shrink-0"
               >
-                <span>{item.buttonLabel}</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
+                <span
+                  className="w-1.5 h-1.5 rounded-full shrink-0"
+                  style={{ backgroundColor: pillar.accent }}
+                />
+                <span className="hidden sm:inline">{pillar.title}</span>
+                <span className="sm:hidden">Dept {pillar.number}</span>
               </button>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ------------------------------------------------------------- */}
-      {/* DESKTOP & TABLET LAYOUT (hidden md:block) — Sticky 3D Showcase */}
-      {/* ------------------------------------------------------------- */}
-      <div
-        ref={containerRef}
-        className="hidden md:block relative w-full min-h-[220vh] bg-black text-white"
-      >
-        {/* Sticky Fullscreen Container */}
-        <div className="sticky top-0 w-full h-screen overflow-hidden flex flex-col justify-between py-8 px-8 md:px-12 bg-black">
-          {/* Top Header & Pillar Switcher Navigation */}
-          <div className="relative z-20 w-full flex flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-2.5">
-              <span className="w-2 h-2 rounded-full bg-[#facc15] shadow-[0_0_10px_#facc15]" />
-              <h3 className="text-sm font-mono tracking-widest text-neutral-400 uppercase">
-                Thematic Departments
-              </h3>
-            </div>
-
-            {/* Quick Pillar Jump Pills */}
-            <div className="flex items-center gap-1.5 p-1 rounded-full bg-zinc-900/90 border border-white/10 backdrop-blur-md max-w-full overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-              {PILLARS.map((pillar, idx) => (
-                <button
-                  key={pillar.id}
-                  onClick={() => handleJumpToCard(idx)}
-                  className="px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-300 hover:text-white cursor-pointer flex items-center gap-1.5 text-neutral-400 hover:bg-white/10 whitespace-nowrap shrink-0"
-                >
-                  <span
-                    className="w-1.5 h-1.5 rounded-full shrink-0"
-                    style={{ backgroundColor: pillar.accent }}
-                  />
-                  <span>{pillar.title}</span>
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Center Canvas: Stacking & Disappearing Animated Cards */}
-          <div className="relative flex-1 w-full my-auto flex items-center justify-center">
-            {PILLARS.map((item, index) => (
-              <PillarCard
-                key={item.id}
-                item={item}
-                index={index}
-                scrollYProgress={scrollYProgress}
-                totalItems={PILLARS.length}
-                onSelectPillar={onSelectPillar}
-                onScrollToFeed={handleScrollToFeed}
-              />
             ))}
           </div>
+        </div>
 
-          {/* Bottom Interactive Progress Bar */}
-          <div className="relative z-20 w-full flex items-center justify-end text-xs text-neutral-500 font-mono">
-            <div className="flex items-center gap-3">
-              <span className="uppercase tracking-widest text-[10px]">
-                Curriculum Progress
-              </span>
-              <div className="w-52 h-1 bg-zinc-800 rounded-full overflow-hidden">
-                <motion.div
-                  style={{ scaleX: scrollYProgress, transformOrigin: "left" }}
-                  className="h-full bg-gradient-to-r from-[#facc15] via-[#fbbf24] to-[#f59e0b]"
-                />
-              </div>
+        {/* Center Canvas: Stacking & Disappearing Animated Cards */}
+        <div className="relative flex-1 w-full my-auto flex items-center justify-center">
+          {PILLARS.map((item, index) => (
+            <PillarCard
+              key={item.id}
+              item={item}
+              index={index}
+              scrollYProgress={scrollYProgress}
+              totalItems={PILLARS.length}
+              onSelectPillar={onSelectPillar}
+              onScrollToFeed={handleScrollToFeed}
+            />
+          ))}
+        </div>
+
+        {/* Bottom Interactive Progress Bar */}
+        <div className="relative z-20 w-full flex items-center justify-end text-xs text-neutral-500 font-mono pb-2 sm:pb-0">
+          <div className="flex items-center gap-3">
+            <span className="uppercase tracking-widest text-[10px]">
+              Curriculum Progress
+            </span>
+            <div className="w-32 sm:w-52 h-1 bg-zinc-800 rounded-full overflow-hidden">
+              <motion.div
+                style={{ scaleX: scrollYProgress, transformOrigin: "left" }}
+                className="h-full bg-gradient-to-r from-[#facc15] via-[#fbbf24] to-[#f59e0b]"
+              />
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

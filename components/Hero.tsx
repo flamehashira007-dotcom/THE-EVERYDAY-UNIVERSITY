@@ -20,14 +20,12 @@ export default function Hero() {
     offset: ["start start", "end start"],
   });
 
-  const videoY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
-  const videoScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
+  const videoY = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
+  const titleY = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
+  const titleOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
-  const titleY = useTransform(scrollYProgress, [0, 1], ["0%", "-40%"]);
-  const titleOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
-
-  const badgeLeftY = useTransform(scrollYProgress, [0, 1], ["0%", "-60%"]);
-  const badgeRightY = useTransform(scrollYProgress, [0, 1], ["0%", "-90%"]);
+  const badgeLeftY = useTransform(scrollYProgress, [0, 1], ["0%", "-40%"]);
+  const badgeRightY = useTransform(scrollYProgress, [0, 1], ["0%", "-60%"]);
 
   return (
     <section
@@ -35,8 +33,8 @@ export default function Hero() {
       className="relative min-h-[100dvh] h-[100dvh] w-full overflow-hidden bg-black text-white"
     >
       <motion.div
-        className="absolute inset-0 z-0 opacity-70"
-        style={{ y: videoY, scale: videoScale }}
+        className="absolute inset-0 z-0 opacity-70 transform-gpu pointer-events-none will-change-transform"
+        style={{ y: videoY }}
       >
         <video
           autoPlay
@@ -44,18 +42,18 @@ export default function Hero() {
           muted
           playsInline
           preload="auto"
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover scale-105"
         >
           <source src="/30 secound vali Final.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </motion.div>
 
-      <div className="absolute inset-0 z-10 bg-linear-to-t from-black via-black/30 to-black/60" />
+      <div className="absolute inset-0 z-10 bg-linear-to-t from-black via-black/30 to-black/60 pointer-events-none" />
 
       <motion.div
         style={{ y: titleY, opacity: titleOpacity }}
-        className="relative z-20 flex h-full w-full flex-col items-center justify-center px-4 pb-0 text-center"
+        className="relative z-20 flex h-full w-full flex-col items-center justify-center px-4 pb-0 text-center transform-gpu will-change-transform"
       >
 
         <motion.div
