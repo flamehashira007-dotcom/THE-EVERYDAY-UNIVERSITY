@@ -81,7 +81,7 @@ export default function ClassroomHero({
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[100dvh] h-[100dvh] w-full overflow-hidden bg-black text-white flex flex-col justify-between pt-24 sm:pt-28 pb-5 sm:pb-8 px-4 sm:px-8 md:px-12"
+      className="relative min-h-[100dvh] h-[100dvh] w-full overflow-hidden bg-black text-white flex flex-col justify-end sm:justify-between pt-20 sm:pt-28 pb-6 sm:pb-8 px-4 sm:px-8 md:px-12 gap-4 sm:gap-0"
     >
       {/* Background Cinematic Visual with Parallax — Max Quality YouTube Thumbnail */}
       <motion.div
@@ -100,13 +100,13 @@ export default function ClassroomHero({
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-black/60 pointer-events-none" />
       </motion.div>
 
-      {/* Top Left Editorial Header */}
+      {/* Top Left Editorial Header (Sits above card on mobile, top-left on desktop) */}
       <motion.div style={{ opacity }} className="relative z-10 max-w-3xl">
         <motion.h1
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="font-sans text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white drop-shadow-lg"
+          className="font-sans text-2xl xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white drop-shadow-lg"
         >
           The Classrooms
         </motion.h1>
@@ -115,7 +115,7 @@ export default function ClassroomHero({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-2.5 sm:mt-4 text-xs sm:text-base md:text-lg text-neutral-200 font-normal leading-relaxed max-w-2xl drop-shadow-md"
+          className="mt-2 sm:mt-4 text-xs sm:text-base md:text-lg text-neutral-200 font-normal leading-relaxed max-w-2xl drop-shadow-md"
         >
           Welcome to the University of Life. Here, we sit down with extraordinary people
           and uncover the stories behind the stories. Every guest is a professor. Every
@@ -128,7 +128,7 @@ export default function ClassroomHero({
         initial={{ opacity: 0, y: 35 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-        className="relative z-10 w-full mt-auto pt-6 sm:pt-0"
+        className="relative z-10 w-full pt-2 sm:pt-0"
       >
         <div className="relative w-full rounded-2xl sm:rounded-[32px] border border-white/20 bg-black/40 backdrop-blur-2xl p-4 sm:px-8 sm:py-6 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-6 overflow-visible">
           {/* Left Side: Episode Tag, Title, Platform Pills */}
