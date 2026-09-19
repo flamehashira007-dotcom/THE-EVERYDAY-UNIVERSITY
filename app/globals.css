@@ -55,3 +55,12 @@ html.lenis body {
     transform: translateX(-50%);
   }
 }
+
+/* Promote marquee tracks to their own GPU compositor layer */
+[class*="animation:marquee-showcase"],
+[style*="marquee-showcase"] {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+

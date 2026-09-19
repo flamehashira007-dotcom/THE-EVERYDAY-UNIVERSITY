@@ -129,7 +129,7 @@ export default function VideoShowcase() {
       {/* Container with Floating Tag */}
       <motion.div
         style={{ y: pillY }}
-        className="relative z-30 mb-6 sm:mb-8 flex justify-center w-full pointer-events-none select-none"
+        className="relative z-30 mb-6 sm:mb-8 flex justify-center w-full pointer-events-none select-none transform-gpu will-change-transform"
       >
         <motion.div
           initial={{ opacity: 0, y: 30, scale: 0.9 }}
@@ -287,7 +287,7 @@ export default function VideoShowcase() {
             {activeVideo && (
               <motion.div
                 style={{ scale: stageScale, opacity: stageOpacity }}
-                className="relative flex flex-1 flex-col justify-between overflow-hidden rounded-2xl bg-[#0a0a0d] border border-white/10 min-h-80 sm:min-h-[480px] shadow-2xl"
+                className="relative flex flex-1 flex-col justify-between overflow-hidden rounded-2xl bg-[#0a0a0d] border border-white/10 min-h-80 sm:min-h-[480px] shadow-2xl transform-gpu will-change-transform"
               >
                 <div className="flex flex-1 flex-col justify-between h-full w-full">
                   {/* Embedded YouTube Frame */}

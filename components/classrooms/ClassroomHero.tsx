@@ -86,7 +86,7 @@ export default function ClassroomHero({
       {/* Background Cinematic Visual with Parallax — Max Quality YouTube Thumbnail */}
       <motion.div
         style={{ y: bgY }}
-        className="absolute inset-0 z-0 pointer-events-none select-none scale-105"
+        className="absolute inset-0 z-0 pointer-events-none select-none scale-105 transform-gpu will-change-transform"
       >
         <img
           key={activeSrc}
@@ -101,7 +101,7 @@ export default function ClassroomHero({
       </motion.div>
 
       {/* Top Left Editorial Header (Sits above card on mobile, top-left on desktop) */}
-      <motion.div style={{ opacity }} className="relative z-10 max-w-3xl">
+      <motion.div style={{ opacity }} className="relative z-10 max-w-3xl will-change-transform">
         <motion.h1
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}

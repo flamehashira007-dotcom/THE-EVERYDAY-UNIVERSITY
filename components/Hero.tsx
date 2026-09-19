@@ -144,7 +144,7 @@ export default function Hero() {
             rotate: { duration: 4, repeat: Infinity, ease: "easeInOut" },
           }}
           whileHover={{ scale: 1.1, rotate: -4 }}
-          className="absolute left-8 bottom-28 hidden cursor-pointer lg:block md:left-14"
+          className="absolute left-8 bottom-28 hidden cursor-pointer lg:block md:left-14 transform-gpu will-change-transform"
         >
           <Image
             src="/p.svg"
@@ -167,7 +167,7 @@ export default function Hero() {
             rotate: { duration: 4.2, repeat: Infinity, ease: "easeInOut" },
           }}
           whileHover={{ scale: 1.1, rotate: 4 }}
-          className="absolute right-8 top-1/2 hidden -translate-y-1/2 cursor-pointer lg:block md:right-14"
+          className="absolute right-8 top-1/2 hidden -translate-y-1/2 cursor-pointer lg:block md:right-14 transform-gpu will-change-transform"
         >
           <Image
             src="/c.svg"

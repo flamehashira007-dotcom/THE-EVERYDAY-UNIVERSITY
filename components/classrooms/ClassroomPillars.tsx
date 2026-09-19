@@ -144,7 +144,7 @@ function PillarCard({
         visibility,
         pointerEvents,
       }}
-      className="absolute inset-0 flex items-center justify-center w-full"
+      className="absolute inset-0 flex items-center justify-center w-full transform-gpu will-change-transform"
     >
       <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 lg:gap-14 items-center">
         {/* Left Info Column */}
@@ -282,7 +282,7 @@ export default function ClassroomPillars({
       className="relative w-full min-h-[220vh] bg-black text-white"
     >
       {/* Sticky Fullscreen Showcase Container */}
-      <div className="sticky top-0 w-full h-screen overflow-hidden flex flex-col justify-between py-6 sm:py-8 px-4 sm:px-8 md:px-12 bg-black">
+      <div className="sticky top-0 w-full h-screen overflow-hidden flex flex-col justify-between py-6 sm:py-8 px-4 sm:px-8 md:px-12 bg-black will-change-transform">
         {/* Top Header & Pillar Switcher Navigation */}
         <div className="relative z-20 w-full flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
           <div className="flex items-center gap-2 sm:gap-2.5">
@@ -335,7 +335,7 @@ export default function ClassroomPillars({
             <div className="w-32 sm:w-52 h-1 bg-zinc-800 rounded-full overflow-hidden">
               <motion.div
                 style={{ scaleX: scrollYProgress, transformOrigin: "left" }}
-                className="h-full bg-gradient-to-r from-[#facc15] via-[#fbbf24] to-[#f59e0b]"
+                className="h-full bg-gradient-to-r from-[#facc15] via-[#fbbf24] to-[#f59e0b] will-change-transform transform-gpu"
               />
             </div>
           </div>
