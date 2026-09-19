@@ -35,7 +35,7 @@ export default function Hero() {
       className="relative h-screen w-full overflow-hidden bg-black text-white"
     >
       <motion.div
-        className="absolute inset-0 z-0 flex items-center justify-center overflow-hidden opacity-70"
+        className="absolute inset-0 z-0 opacity-70"
         style={{ y: videoY, scale: videoScale }}
       >
         <video
@@ -44,25 +44,25 @@ export default function Hero() {
           muted
           playsInline
           preload="auto"
-          className="h-full w-full object-cover -rotate-90 scale-[1.78] sm:rotate-0 sm:scale-100 transition-transform duration-300"
+          className="h-full w-full object-cover"
         >
           <source src="/30 secound vali Final.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </motion.div>
 
-      <div className="absolute inset-0 z-10 bg-gradient-to-t from-black via-black/40 to-black/60 pointer-events-none" />
+      <div className="absolute inset-0 z-10 bg-linear-to-t from-black via-black/30 to-black/60" />
 
       <motion.div
         style={{ y: titleY, opacity: titleOpacity }}
-        className="relative z-20 flex h-full w-full flex-col items-center justify-end px-4 pb-12 sm:pb-16 md:pb-14"
+        className="relative z-20 flex h-full w-full flex-col items-center justify-center px-4 pb-0 md:justify-end md:pb-14"
       >
 
         <motion.div
           initial={{ opacity: 0, scale: 0.9, y: 30 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          className="relative flex flex-col items-center justify-center text-center font-black uppercase leading-[0.85] sm:leading-[0.82] tracking-tighter select-none"
+          className="relative flex flex-col items-center justify-center text-center font-black uppercase leading-[0.82] tracking-tighter select-none"
         >
           {["THE", "EVERYDAY", "UNIVERSITY"].map((word, i) => (
             <motion.span
@@ -77,8 +77,8 @@ export default function Hero() {
               style={{ color: i === 1 ? "#fff" : LOGO_YELLOW }}
               className={
                 i === 1
-                  ? "text-4xl sm:text-7xl md:text-[8rem]"
-                  : "text-5xl sm:text-8xl md:text-[9rem]"
+                  ? "text-5xl sm:text-7xl md:text-[8rem] "
+                  : "text-6xl sm:text-8xl md:text-[9rem] "
               }
             >
               {word}
@@ -91,9 +91,9 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.75, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-4 sm:mt-6 max-w-xl text-center text-xs sm:text-sm md:text-2xl uppercase tracking-wider sm:tracking-wide text-white/70 font-medium px-2"
+          className="mt-6 max-w-xl text-center text-sm uppercase tracking-wide text-white/50 md:text-2xl"
         >
-          Where legends speak and dreams take flight
+          Where legends speak and dreams take 
         </motion.p>
 
         {/* Floating Left Purple Badge (p.svg) */}
