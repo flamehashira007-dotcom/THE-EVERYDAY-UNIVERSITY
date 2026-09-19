@@ -71,3 +71,22 @@ html.lenis body {
     transform: translateX(-50%);
   }
 }
+
+/* Hide scrollbars on Cal.com iframe embed */
+iframe[data-cal-embed],
+div[data-cal-link],
+.cal-embed-wrapper,
+.cal-embed-wrapper iframe {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+  overflow: hidden !important;
+}
+
+iframe[data-cal-embed]::-webkit-scrollbar,
+div[data-cal-link]::-webkit-scrollbar,
+.cal-embed-wrapper::-webkit-scrollbar,
+.cal-embed-wrapper iframe::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
