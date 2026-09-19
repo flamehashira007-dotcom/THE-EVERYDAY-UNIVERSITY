@@ -100,19 +100,6 @@ export default function ContactCalEmbed({
           transition={{ duration: 0.7 }}
           className="relative w-full overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#0a0a0f] p-4 sm:p-6 md:p-8 shadow-2xl"
         >
-          {/* Top Live Bar */}
-          <div className="mb-6 flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-4 px-2">
-            <div className="flex items-center gap-2 text-xs font-medium text-neutral-300">
-              <span className="h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="font-bold text-white">Live Booking Calendar</span>
-              <span className="text-neutral-600">•</span>
-              <span className="text-neutral-400">Powered by Cal.com</span>
-            </div>
-            <div className="text-[11px] font-mono text-neutral-400">
-              Real-time Availability
-            </div>
-          </div>
-
           {/* Cal.com Official Embed */}
           <div className="min-h-[600px] w-full rounded-2xl overflow-hidden bg-[#07070a]">
             <Cal
