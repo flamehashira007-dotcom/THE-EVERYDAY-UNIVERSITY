@@ -92,11 +92,11 @@ export default function ContactCalEmbed({
           </div>
         </div>
 
-        {/* Native Cal.com Booking Embed */}
-        <div className="w-full">
+        {/* Native Cal.com Booking Embed (No scrollbars) */}
+        <div className="w-full max-w-4xl mx-auto overflow-hidden rounded-2xl [&_iframe]:!border-0 [&_iframe]:!overflow-hidden [&_iframe]:!w-full [&_iframe]:!min-h-[720px]">
           <Cal
             calLink={calLink}
-            style={{ width: "100%", height: "100%", minHeight: "650px", overflow: "visible" }}
+            style={{ width: "100%", height: "100%", minHeight: "720px", overflow: "hidden" }}
             config={{ layout: "month_view", theme: "dark" }}
           />
         </div>
