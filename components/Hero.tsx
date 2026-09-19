@@ -86,12 +86,12 @@ export default function Hero() {
           ))}
         </motion.div>
 
-        {/* Small subheading */}
+        {/* Subheading */}
         <motion.p
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.75, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-4 sm:mt-6 max-w-xl text-center text-xs sm:text-sm uppercase tracking-widest text-white/70 md:text-2xl font-medium"
+          className="mt-4 sm:mt-6 max-w-xl text-center text-sm xs:text-base sm:text-lg md:text-2xl uppercase tracking-wider sm:tracking-widest text-white/90 md:text-white/70 font-semibold md:font-medium leading-relaxed"
         >
           Where legends speak and dreams take flight
         </motion.p>

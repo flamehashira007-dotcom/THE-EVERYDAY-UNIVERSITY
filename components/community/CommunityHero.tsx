@@ -36,7 +36,7 @@ export default function CommunityHero() {
             </h1>
 
             {/* Subtitle / Body Text */}
-            <p className="mt-3.5 sm:mt-7 font-sans text-xs sm:text-base md:text-[1.15rem] leading-relaxed sm:leading-[1.45] text-neutral-200/95 font-normal tracking-normal max-w-3xl">
+            <p className="mt-3.5 sm:mt-7 font-sans text-sm xs:text-base md:text-[1.15rem] leading-relaxed sm:leading-[1.45] text-neutral-200/95 font-normal tracking-normal max-w-3xl">
               At The Everyday University, the conversation doesn&apos;t end when the episode does. Welcome to a space for lifelong learners, builders, and storytellers to connect. Join our community of listeners to discuss the latest episodes, share your own journey, and grow alongside people who are just as driven to turn inspiration into action.
             </p>
           </motion.div>
