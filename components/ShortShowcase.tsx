@@ -167,7 +167,7 @@ export default function ShortShowcase() {
                 key={item.id}
                 whileHover={!isPlayingThis ? { y: -6 } : {}}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className={`relative shrink-0 h-[62vh] min-h-[440px] max-h-[600px] aspect-9/16 rounded-2xl overflow-hidden bg-[#0e0e11] border snap-start shadow-2xl transition-all duration-300 ${
+                className={`relative shrink-0 h-[62vh] min-h-[440px] max-h-[600px] aspect-9/16 rounded-2xl overflow-hidden bg-[#0e0e11] border snap-start shadow-2xl transition-all duration-300 transform-gpu will-change-transform ${
                   isPlayingThis ? "border-yellow-400 ring-2 ring-yellow-400/40" : "border-white/10"
                 }`}
               >
