@@ -8,7 +8,7 @@ export default function CommunityHero() {
     <section className="relative min-h-[100dvh] h-screen w-full overflow-hidden bg-black text-white flex flex-col justify-center sm:justify-end">
       {/* Background Image */}
       <img
-        src="/Copy of IMG_3921.JPG"
+        src="/Copy of IMG_2021.JPG"
         alt="The Everyday Community"
         className="absolute inset-0 h-full w-full object-cover object-center pointer-events-none select-none brightness-75"
       />

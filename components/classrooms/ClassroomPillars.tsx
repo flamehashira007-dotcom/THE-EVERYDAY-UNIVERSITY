@@ -73,7 +73,7 @@ const PILLARS: StoryPillarItem[] = [
       "Explore the craft of storytelling, media, and creative expression through the lens of visionary leaders.",
     buttonLabel: "Enter the School",
     badge: "Creative Mastery",
-    image: "/Copy of IMG_3921.JPG",
+    image: "/Copy of IMG_2021.JPG",
     accent: "#a855f7",
     accentGlow: "rgba(168, 85, 247, 0.35)",
   },
