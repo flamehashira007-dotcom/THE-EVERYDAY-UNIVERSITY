@@ -49,22 +49,10 @@ const WORDS = [
 
 export default function AboutSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
-  const patternRef = useRef<HTMLDivElement | null>(null);
-  const patternRefMobile = useRef<HTMLDivElement | null>(null);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
-  });
-
-  const { scrollYProgress: patternProgress } = useScroll({
-    target: patternRef,
-    offset: ["start end", "start 65%"],
-  });
-
-  const { scrollYProgress: patternProgressMobile } = useScroll({
-    target: patternRefMobile,
-    offset: ["start end", "start 65%"],
   });
 
   /* Enhanced parallax — text moves slower than page */
@@ -73,25 +61,6 @@ export default function AboutSection() {
   /* Steven cutout — horizontal parallax and subtle scale */
   const stevenX = useTransform(scrollYProgress, [0, 1], [180, -40]);
   const stevenScale = useTransform(scrollYProgress, [0, 0.5], [0.95, 1]);
-
-  const patternReveal = useTransform(patternProgress, [0, 1], [100, 0], {
-    clamp: true,
-  });
-  const patternClipPath = useTransform(
-    patternReveal,
-    (v) => `inset(${v}% 0 0 0)`
-  );
-
-  const patternRevealMobile = useTransform(
-    patternProgressMobile,
-    [0, 1],
-    [100, 0],
-    { clamp: true }
-  );
-  const patternClipPathMobile = useTransform(
-    patternRevealMobile,
-    (v) => `inset(${v}% 0 0 0)`
-  );
 
   return (
     <section
@@ -165,34 +134,6 @@ export default function AboutSection() {
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 85vw, 48vw"
           className="object-contain object-bottom"
           priority
-        />
-      </motion.div>
-
-      {/* Desktop Pattern */}
-      <motion.div
-        ref={patternRef}
-        style={{ clipPath: patternClipPath }}
-        className="pointer-events-none absolute right-0 bottom-0 z-0 hidden h-14 w-full overflow-hidden md:block lg:h-16 lg:w-[55%] xl:w-[58%]"
-      >
-        <Image
-          src="/pattern.svg"
-          alt=""
-          fill
-          className="object-cover object-bottom"
-        />
-      </motion.div>
-
-      {/* Mobile Pattern */}
-      <motion.div
-        ref={patternRefMobile}
-        style={{ clipPath: patternClipPathMobile }}
-        className="pointer-events-none absolute bottom-0 left-0 z-0 block h-8 w-full overflow-hidden sm:h-10 md:hidden"
-      >
-        <Image
-          src="/pattern.svg"
-          alt=""
-          fill
-          className="object-cover object-bottom"
         />
       </motion.div>
     </section>
