@@ -106,10 +106,7 @@ export default function ClassroomsClient({
         onPlayVideo={handlePlayVideo}
       />
 
-      {/* 4. Live Booking Strategy Call Scheduler */}
-      <ContactCalEmbed />
-
-      {/* 5. Interactive YouTube Video Player Modal */}
+      {/* 4. Interactive YouTube Video Player Modal */}
       <ClassroomModal
         isOpen={modalState.isOpen}
         onClose={() => setModalState({ isOpen: false, videoUrl: "", title: "" })}
@@ -117,7 +114,7 @@ export default function ClassroomsClient({
         title={modalState.title}
       />
 
-      {/* 6. Global Contact Modal */}
+      {/* 5. Global Contact Modal */}
       <ContactModal />
     </main>
   );
