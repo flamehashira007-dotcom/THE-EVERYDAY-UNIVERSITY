@@ -36,11 +36,6 @@ const EVENT_IMAGES: EventImage[] = [
     src: "/Copy of IMG_3731.JPG",
     alt: "The Everyday University event presentation",
   },
-  {
-    id: "6",
-    src: "/Copy of IMG_3921.JPG",
-    alt: "The Everyday University workshop panel",
-  },
 ];
 
 
