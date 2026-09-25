@@ -174,6 +174,14 @@ export default function ClassroomHero({
                 YouTube
               </a>
               <a
+                href="https://open.spotify.com/show/1vLkx0lHA6eOtqFjiOKRR1"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/10 hover:bg-white/25 hover:border-[#facc15]/50 hover:text-[#facc15] px-4 sm:px-5 py-1.5 text-xs sm:text-sm font-medium text-white/90 backdrop-blur-md transition-all shadow-sm"
+              >
+                Spotify
+              </a>
+              <a
                 href="https://www.instagram.com/theeverydayuniversity"
                 target="_blank"
                 rel="noopener noreferrer"

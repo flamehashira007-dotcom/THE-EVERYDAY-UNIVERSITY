@@ -13,6 +13,7 @@ const INQUIRY_TYPES = [
 
 const SOCIALS = [
   { label: "YouTube", href: "https://www.youtube.com/@TheEverydayUniversity" },
+  { label: "Spotify", href: "https://open.spotify.com/show/1vLkx0lHA6eOtqFjiOKRR1" },
   { label: "Instagram", href: "https://www.instagram.com/theeverydayuniversity" },
   { label: "TikTok", href: "https://www.tiktok.com/@the.everyday.univ" },
   { label: "Twitter", href: "https://x.com/everydayunivers" },

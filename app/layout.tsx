@@ -103,6 +103,7 @@ const jsonLd = {
       "logo": "https://theeverydayuniversity.com/dasi.png",
       "sameAs": [
         "https://www.youtube.com/@TheEverydayUniversity",
+        "https://open.spotify.com/show/1vLkx0lHA6eOtqFjiOKRR1",
         "https://www.instagram.com/theeverydayuniversity",
         "https://www.tiktok.com/@the.everyday.univ",
         "https://x.com/everydayunivers",

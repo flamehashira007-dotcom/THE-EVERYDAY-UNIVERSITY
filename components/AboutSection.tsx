@@ -159,7 +159,7 @@ export default function AboutSection() {
         className="pointer-events-none absolute bottom-0 right-0 z-20 h-[52vh] w-full sm:h-[62vh] sm:w-[85%] lg:right-[2%] lg:h-[88vh] lg:w-[48%] xl:right-[4%] xl:w-[45%]"
       >
         <Image
-          src="/dasi.png"
+          src="/dasi-cutout.png"
           alt="Dasi - The Everyday University"
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 85vw, 48vw"
