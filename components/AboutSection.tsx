@@ -58,9 +58,9 @@ export default function AboutSection() {
   /* Enhanced parallax — text moves slower than page */
   const textY = useTransform(scrollYProgress, [0, 1], [40, -40]);
 
-  /* Steven cutout — horizontal parallax and subtle scale */
-  const stevenX = useTransform(scrollYProgress, [0, 1], [180, -40]);
-  const stevenScale = useTransform(scrollYProgress, [0, 0.5], [0.95, 1]);
+  /* Dasi cutout — horizontal parallax and subtle scale */
+  const dasiX = useTransform(scrollYProgress, [0, 1], [180, -40]);
+  const dasiScale = useTransform(scrollYProgress, [0, 0.5], [0.95, 1]);
 
   return (
     <section
@@ -124,7 +124,7 @@ export default function AboutSection() {
 
       {/* Dasi Cutout — pinned flush to bottom */}
       <motion.div
-        style={{ x: stevenX, scale: stevenScale }}
+        style={{ x: dasiX, scale: dasiScale }}
         className="pointer-events-none absolute bottom-0 right-0 z-20 h-[52vh] w-full sm:h-[62vh] sm:w-[85%] lg:right-[2%] lg:h-[88vh] lg:w-[48%] xl:right-[4%] xl:w-[45%]"
       >
         <Image
