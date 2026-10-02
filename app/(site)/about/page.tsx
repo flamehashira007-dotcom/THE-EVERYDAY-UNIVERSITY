@@ -46,7 +46,6 @@ export default function AboutPage() {
 
       {/* 6. CTA & Calendar Strategy Call */}
       <CtaSection />
-      <ContactCalEmbed />
       <ContactModal />
     </main>
   );

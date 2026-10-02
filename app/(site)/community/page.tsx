@@ -37,10 +37,7 @@ export default function CommunityPage() {
       {/* 8. Frequently Asked Questions */}
       <CommunityFaq />
 
-      {/* 9. Live Calendar Intro Booking */}
-      <ContactCalEmbed />
-
-      {/* 10. Global Contact Modal */}
+      {/* 9. Global Contact Modal */}
       <ContactModal />
     </main>
   );

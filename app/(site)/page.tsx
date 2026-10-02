@@ -19,7 +19,6 @@ const RootPage = () => {
       <GallerySection />
       <SpeakingShowcase />
       <CtaSection />
-      <ContactCalEmbed />
       <ContactModal />
     </>
   );
