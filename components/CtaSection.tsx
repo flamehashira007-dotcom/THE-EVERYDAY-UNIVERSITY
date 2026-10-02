@@ -75,23 +75,16 @@ export default function CtaSection() {
               className="mt-8 flex flex-wrap items-center justify-center gap-4"
             >
               <Link
-<<<<<<< HEAD
                 href="/episodes"
                 className="flex items-center justify-center rounded-full bg-[#facc15] px-8 py-3.5 text-xs font-black uppercase tracking-wider text-black shadow-lg transition-all hover:scale-105 hover:bg-white"
               >
                 Watch Latest Episode
-=======
-                href="/contact"
-                className="flex items-center justify-center rounded-full bg-[#facc15] px-8 py-3.5 text-xs font-black uppercase tracking-wider text-black shadow-lg transition-all hover:scale-105 hover:bg-white"
-              >
-                Book a Call
->>>>>>> 67d60e2515050df3d2f5fd45b67d8b121a443997
               </Link>
               <Link
-                href="/classrooms"
+                href="/contact"
                 className="flex items-center justify-center rounded-full border border-white/25 bg-white/5 px-8 py-3.5 text-xs font-bold uppercase tracking-wider text-white backdrop-blur-md transition-all hover:border-[#facc15] hover:text-[#facc15]"
               >
-                Watch the Latest Episode
+                Book a Call
               </Link>
             </motion.div>
           </div>
