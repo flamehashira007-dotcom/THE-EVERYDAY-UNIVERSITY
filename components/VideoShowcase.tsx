@@ -191,7 +191,7 @@ export default function VideoShowcase() {
                   className="flex items-center justify-between mb-5 px-2"
                 >
                   <h3 className="text-xl font-bold tracking-tight text-white">
-                    Featured Classrooms
+                    Featured Episodes
                   </h3>
                   <span className="text-xs text-neutral-400 font-medium">
                     {videos.length} {videos.length === 1 ? "Episode" : "Episodes"}

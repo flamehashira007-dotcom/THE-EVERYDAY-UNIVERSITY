@@ -8,7 +8,7 @@ import { getLenis } from "@/lib/lenis";
 
 const QUICK_LINKS = [
   { label: "Home", href: "/" },
-  { label: "The Classrooms", href: "/classrooms" },
+  { label: "Podcast Episodes", href: "/episodes" },
   { label: "Community", href: "/community" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
@@ -94,7 +94,7 @@ export default function Footer() {
                 The Everyday University Newsletter
               </h3>
               <p className="mt-2 text-sm font-medium text-black/80">
-                Join the classroom. Get the latest lessons and stories sent straight to your inbox.
+                Subscribe to the newsletter. Get the latest lessons and stories sent straight to your inbox.
               </p>
             </div>
 
@@ -191,7 +191,7 @@ export default function Footer() {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Your email"
+                  placeholder="Subscribe to the newsletter"
                   className="w-full rounded-full bg-white py-3.5 pl-6 pr-14 text-sm font-medium text-black placeholder-neutral-500 shadow-md outline-none transition focus:ring-2 focus:ring-black"
                 />
                 <button
@@ -315,14 +315,14 @@ export default function Footer() {
               </motion.div>
             </div>
 
-            {/* Bottom Button: Pill "Take Me There" */}
+            {/* Bottom Button: Pill "Watch Episodes" */}
             <motion.div whileHover={{ scale: 1.015 }} whileTap={{ scale: 0.985 }}>
               <Link
-                href="/classrooms"
-                className="flex h-12 w-full items-center justify-center rounded-full border border-black bg-transparent text-xs font-black uppercase tracking-wider text-black transition-all hover:bg-black hover:text-white"
+                href="/episodes"
+                className="group flex h-12 w-full items-center justify-center rounded-full border border-black bg-transparent text-xs font-black uppercase tracking-wider text-black transition-all duration-300 hover:bg-black hover:text-white"
               >
-                <span className="font-bold tracking-widest text-black transition-colors hover:text-white">
-                  Take Me There
+                <span className="font-bold tracking-widest text-black transition-colors duration-300 group-hover:text-white">
+                  Watch Episodes
                 </span>
               </Link>
             </motion.div>
@@ -345,7 +345,7 @@ export default function Footer() {
               Privacy Policy
             </Link>
             <Link href="/terms-and-conditions" className="font-semibold text-black transition hover:opacity-70">
-              Terms and Conditions
+              Terms &amp; Conditions
             </Link>
           </div>
 

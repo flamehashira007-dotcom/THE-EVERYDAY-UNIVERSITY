@@ -215,7 +215,7 @@ export default function ClassroomHero({
               className="inline-flex items-center justify-center gap-2 rounded-full bg-[#facc15] hover:bg-white text-black px-6 sm:px-8 py-2.5 sm:py-3 text-xs sm:text-sm font-bold tracking-wide shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
             >
               <Play className="w-4 h-4 fill-current" />
-              <span>Start Learning</span>
+              <span>Watch Episode</span>
             </button>
           </div>
         </div>

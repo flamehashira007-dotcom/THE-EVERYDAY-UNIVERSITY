@@ -39,7 +39,7 @@ const WORDS = [
   { text: "I CREATED ", highlight: false },
   { text: "THE EVERYDAY UNIVERSITY ", highlight: true },
   { text: "BECAUSE I BELIEVE THE WORLD IS FULL OF ", highlight: false },
-  { text: "CLASSROOMS THAT DON'T HAVE FOUR WALLS—", highlight: true },
+  { text: "CLASSROOMS THAT DON'T HAVE FOUR WALLS-", highlight: true },
   {
     text: "AND SOME OF THE GREATEST TEACHERS NEVER STOOD IN FRONT OF A CLASSROOM. THIS ISN'T JUST A PODCAST ABOUT SUCCESSFUL PEOPLE. ",
     highlight: false,

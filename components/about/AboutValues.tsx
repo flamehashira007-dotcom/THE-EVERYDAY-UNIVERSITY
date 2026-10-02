@@ -4,49 +4,50 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-const VALUE_ITEMS = [
+const VISION_ITEMS = [
   {
-    title: "Every Guest is a Professor",
+    title: "Business & Entrepreneurship",
     description:
-      "Real people who have built something, lost something, failed, and started again.",
+      "A place where a young entrepreneur can learn from a seasoned business owner.",
     icon: (
       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M16.247 7.761a6 6 0 0 1 0 8.478m2.828-11.306a10 10 0 0 1 0 14.134m-14.15 0a10 10 0 0 1 0-14.134m2.828 11.306a6 6 0 0 1 0-8.478" />
-        <circle cx="12" cy="12" r="2" />
+        <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z" />
+        <path d="M6 6h10" />
+        <path d="M6 10h10" />
+        <path d="m18 14 3-3-3-3" />
       </svg>
     ),
   },
   {
-    title: "Every Story is a Lesson",
+    title: "Technology & Innovation",
     description:
-      "Extracting actionable wisdom, not just celebrating success.",
+      "Where a creator can discover a new tool, and technology becomes understandable instead of intimidating.",
     icon: (
       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2" />
-        <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0m1 7v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
       </svg>
     ),
   },
   {
-    title: "Every Conversation is a Classroom",
+    title: "Resilience & Growth",
     description:
-      "An open space for vulnerable, deep, and transformative dialogues.",
+      "Where someone's story can give another person the courage to keep going.",
     icon: (
       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
         <path d="m9 12 2 2 4-4" />
       </svg>
     ),
   },
   {
-    title: "Every Listener is a Student",
+    title: "Everyday Lessons",
     description:
-      "Empowering you to navigate your own journey with greater courage and purpose.",
+      "Where ordinary people can discover that their experiences may be extraordinary lessons for someone else.",
     icon: (
       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10" />
-        <circle cx="12" cy="12" r="6" />
-        <circle cx="12" cy="12" r="2" />
+        <path d="M12 16v-4" />
+        <path d="M12 8h.01" />
       </svg>
     ),
   },
@@ -65,7 +66,7 @@ export default function AboutValues() {
             transition={{ duration: 0.5 }}
           >
             <span className="text-xs font-black uppercase tracking-[0.25em] text-[#facc15]">
-              OUR PHILOSOPHY
+              THE VISION
             </span>
           </motion.div>
 
@@ -74,9 +75,9 @@ export default function AboutValues() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl font-extrabold tracking-tight text-white sm:text-6xl lg:text-7xl"
+            className="text-3xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl"
           >
-            The Everyday Curriculum
+            This is bigger than a podcast.
           </motion.h2>
 
           <motion.div
@@ -86,15 +87,8 @@ export default function AboutValues() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="max-w-4xl space-y-5 text-base leading-relaxed text-neutral-300 sm:text-lg sm:leading-relaxed"
           >
-            <p className="text-xl sm:text-2xl font-medium text-white">
-              We aren't here for surface-level interviews. We are here to uncover the untold dimensions of the world's most fascinating people.
-            </p>
-            <p>
-              Every conversation on The Everyday University is structured as a living classroom. We unpack the turning points, the quiet sacrifices, and the hard-won insights that formal education rarely teaches.
-            </p>
-            <p className="font-bold text-white">
-              <span className="text-neutral-400">Not just to inspire you for a moment. </span>
-              <span className="text-[#facc15]">To equip you for a lifetime.</span>
+            <p className="text-xl sm:text-2xl font-medium text-white leading-relaxed">
+              The podcast is where the journey began, but the vision is much bigger. The Everyday University is my way of building a community around lifelong learning - a platform for ideas, stories, education, and connection.
             </p>
           </motion.div>
         </div>
@@ -124,7 +118,7 @@ export default function AboutValues() {
 
           {/* Right Column: 2x2 Values Grid */}
           <div className="grid grid-cols-1 gap-x-12 gap-y-12 sm:grid-cols-2 lg:col-span-7">
-            {VALUE_ITEMS.map((item, idx) => (
+            {VISION_ITEMS.map((item, idx) => (
               <motion.div
                 key={item.title}
                 initial={{ opacity: 0, y: 25 }}

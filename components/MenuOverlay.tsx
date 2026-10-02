@@ -16,7 +16,7 @@ interface LinkItem {
 }
 
 const links: LinkItem[] = [
-  { id: "01", label: "The Classrooms", href: "/classrooms" },
+  { id: "01", label: "Podcast Episodes", href: "/episodes" },
   { id: "02", label: "Community", href: "/community" },
   { id: "03", label: "About", href: "/about" },
   { id: "04", label: "Contact", href: "/contact" },

@@ -43,7 +43,7 @@ const PILLARS: StoryPillarItem[] = [
     subtitle: "Founders, Builders & Investors",
     description:
       "Learn from founders, investors, and builders who have navigated the highs and lows of creating something from nothing.",
-    buttonLabel: "Enter the School",
+    buttonLabel: "View Episodes",
     badge: "Foundational Blueprints",
     image: "/Copy of IMG_2145.JPG",
     accent: "#facc15",
@@ -57,7 +57,7 @@ const PILLARS: StoryPillarItem[] = [
     subtitle: "Overcoming Adversity",
     description:
       "Stories of overcoming failure, enduring loss, and the powerful lessons learned from starting over.",
-    buttonLabel: "Enter the School",
+    buttonLabel: "View Episodes",
     badge: "Mental Toughness",
     image: "/Copy of IMG_2357.JPG",
     accent: "#38bdf8",
@@ -71,7 +71,7 @@ const PILLARS: StoryPillarItem[] = [
     subtitle: "Creatives & Cultural Architects",
     description:
       "Explore the craft of storytelling, media, and creative expression through the lens of visionary leaders.",
-    buttonLabel: "Enter the School",
+    buttonLabel: "View Episodes",
     badge: "Creative Mastery",
     image: "/Copy of IMG_2021.JPG",
     accent: "#a855f7",
@@ -254,9 +254,10 @@ export default function ClassroomPillars({
     const feedElement = document.getElementById("classroom-feed");
     const lenis = getLenis();
     if (lenis && feedElement) {
-      lenis.scrollTo(feedElement, { offset: -40, duration: 1.0 });
+      lenis.scrollTo(feedElement, { offset: -60, duration: 1.0 });
     } else if (feedElement) {
-      feedElement.scrollIntoView({ behavior: "smooth" });
+      const top = feedElement.getBoundingClientRect().top + window.scrollY - 60;
+      window.scrollTo({ top, behavior: "smooth" });
     }
   };
 

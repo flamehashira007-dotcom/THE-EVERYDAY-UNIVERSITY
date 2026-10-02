@@ -52,6 +52,20 @@ export const videoType = defineType({
       placeholder: 'e.g. Episode 1',
     }),
     defineField({
+      name: 'category',
+      title: 'Department / Category',
+      type: 'string',
+      description: 'Thematic Department for the Classrooms & Episodes page',
+      options: {
+        list: [
+          { title: 'Business & Entrepreneurship', value: 'business' },
+          { title: 'Resilience & Growth', value: 'resilience' },
+          { title: 'Arts & Storytelling', value: 'arts-culture' },
+        ],
+      },
+      initialValue: 'business',
+    }),
+    defineField({
       name: 'duration',
       title: 'Duration / Tag',
       type: 'string',

@@ -19,7 +19,7 @@ export default function ClassroomSpotlight({ onPlayVideo }: ClassroomSpotlightPr
     if (onPlayVideo) {
       onPlayVideo(
         "cPXHUyKm8DU",
-        "Curated Playlist: Entrepreneurship 101 — From Idea to Execution"
+        "Curated Playlist: Entrepreneurship 101 - From Idea to Execution"
       );
     } else {
       window.open("https://www.youtube.com/@TheEverydayUniversity", "_blank");
@@ -47,7 +47,7 @@ export default function ClassroomSpotlight({ onPlayVideo }: ClassroomSpotlightPr
 
             <p className="text-neutral-300 text-sm sm:text-base md:text-lg leading-relaxed font-light mb-8 max-w-xl">
               Instead of purely chronological episodes, bundle your learning. Dive into curated
-              playlists styled as courses—like &ldquo;Entrepreneurship 101: From Idea to
+              playlists styled as courses - like &ldquo;Entrepreneurship 101: From Idea to
               Execution&rdquo; or &ldquo;Mastering Failure: Turning Pain into Purpose.&rdquo;
             </p>
 
@@ -59,7 +59,7 @@ export default function ClassroomSpotlight({ onPlayVideo }: ClassroomSpotlightPr
                   boxShadow: "0 10px 30px rgba(250, 204, 21, 0.25)",
                 }}
               >
-                <span>Explore All Courses</span>
+                <span>View Playlists</span>
                 <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </button>
 

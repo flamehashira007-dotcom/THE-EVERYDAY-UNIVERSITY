@@ -30,7 +30,7 @@ const LEFT_COLUMN_GUESTS: GuestTestimonial[] = [
   },
   {
     quote:
-      "“Listening to these stories changed how I handle setback in my own company. You quickly realize that failure isn’t a dead end—it’s the foundational syllabus.”",
+      "“Listening to these stories changed how I handle setback in my own company. You quickly realize that failure isn’t a dead end - it’s the foundational syllabus.”",
     name: "Dean Gardner",
     role: "Entrepreneur & Lifelong Listener",
     avatar:

@@ -5,6 +5,7 @@ import {
   AboutShowcaseImage,
   AboutStatement,
   AboutValues,
+  AboutMission,
   AboutGuests,
 } from "@/components/about";
 import CtaSection from "@/components/CtaSection";
@@ -14,11 +15,11 @@ import ContactModal from "@/components/ContactModal";
 export const metadata: Metadata = {
   title: "About Our Story & Mission",
   description:
-    "Learn about Dasi and the philosophy behind The Everyday University. Exploring the classrooms that don't have four walls and the teachers of everyday life.",
+    "Learn about MC DASI and the philosophy behind The Everyday University. Exploring the classrooms that don't have four walls and the teachers of everyday life.",
   openGraph: {
     title: "About Our Story & Mission | The Everyday University",
     description:
-      "Learn about Dasi and the philosophy behind The Everyday University.",
+      "Learn about MC DASI and the philosophy behind The Everyday University.",
   },
 };
 
@@ -31,13 +32,16 @@ export default function AboutPage() {
       {/* 2. Full-Window Image Banner */}
       <AboutShowcaseImage />
 
-      {/* 3. Editorial Two-Column Statement */}
+      {/* 3. Editorial Two-Column Statement / Founder Letter */}
       <AboutStatement />
 
-      {/* 4. Values Manifesto & 3D Glass Artwork */}
+      {/* 4. The Vision (Philosophy Grid) */}
       <AboutValues />
 
-      {/* 5. Guests & Testimonials */}
+      {/* 5. The Mission & Sign-Off */}
+      <AboutMission />
+
+      {/* 6. Guests & Testimonials */}
       {/* <AboutGuests /> */}
 
       {/* 6. CTA & Calendar Strategy Call */}

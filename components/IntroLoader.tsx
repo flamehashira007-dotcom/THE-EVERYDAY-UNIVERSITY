@@ -9,7 +9,6 @@ const easeCustom = [0.76, 0, 0.24, 1] as const;
 interface FrameItem {
   id: number;
   frameNum: string;
-  tag?: string;
   type: "single" | "stacked" | "question" | "brand" | "tagline";
   text?: string;
   lines?: string[];
@@ -21,50 +20,46 @@ const FRAMES: FrameItem[] = [
   {
     id: 1,
     frameNum: "01",
-    tag: "THE HOOK",
     type: "single",
     text: "EVERYONE HAS A STORY.",
-    duration: 1500,
+    duration: 2000,
   },
   {
     id: 2,
     frameNum: "02",
-    tag: "THE PROMISE",
     type: "single",
     text: "EVERY STORY HAS A LESSON.",
     highlightWords: ["LESSON."],
-    duration: 1500,
+    duration: 2000,
   },
   {
     id: 3,
     frameNum: "03",
-    tag: "THE PURPOSE",
     type: "single",
     text: "AND EVERY LESSON CAN CHANGE A LIFE.",
     highlightWords: ["CHANGE", "A", "LIFE."],
-    duration: 1600,
+    duration: 2200,
   },
   {
     id: 4,
     frameNum: "04",
-    tag: "THE QUESTION",
     type: "question",
     text: "What if the world itself was a university?",
-    duration: 1700,
+    duration: 2400,
   },
   {
     id: 5,
     frameNum: "05",
     type: "stacked",
     lines: ["No classrooms.", "No exams.", "No tuition."],
-    duration: 1800,
+    duration: 2400,
   },
   {
     id: 6,
     frameNum: "06",
     type: "single",
     text: "Just people.",
-    duration: 1300,
+    duration: 1800,
   },
   {
     id: 7,
@@ -75,27 +70,26 @@ const FRAMES: FrameItem[] = [
       "People who have lost something.",
       "People who started with nothing.",
     ],
-    duration: 2000,
+    duration: 2700,
   },
   {
     id: 8,
     frameNum: "08",
     type: "stacked",
     lines: [
-      "People who failed—and started again.",
+      "People who failed - and started again.",
       "People who turned pain into purpose.",
       "People who dared to dream.",
     ],
-    duration: 2000,
+    duration: 2700,
   },
   {
     id: 9,
     frameNum: "09",
-    tag: "THE REVEAL",
     type: "single",
     text: "THESE ARE OUR PROFESSORS.",
     highlightWords: ["PROFESSORS."],
-    duration: 1500,
+    duration: 2000,
   },
   {
     id: 10,
@@ -103,7 +97,7 @@ const FRAMES: FrameItem[] = [
     type: "single",
     text: "THEIR LIVES ARE OUR TEXTBOOKS.",
     highlightWords: ["TEXTBOOKS."],
-    duration: 1500,
+    duration: 2000,
   },
   {
     id: 11,
@@ -111,23 +105,21 @@ const FRAMES: FrameItem[] = [
     type: "single",
     text: "THEIR STORIES ARE OUR CLASSROOMS.",
     highlightWords: ["CLASSROOMS."],
-    duration: 1600,
+    duration: 2200,
   },
   {
     id: 12,
     frameNum: "12",
-    tag: "BRAND REVEAL",
     type: "brand",
     text: "THE EVERYDAY UNIVERSITY",
-    duration: 1800,
+    duration: 2500,
   },
   {
     id: 13,
     frameNum: "13",
-    tag: "TAGLINE",
     type: "tagline",
     text: "Where legends speak and dreams take flight.",
-    duration: 2200,
+    duration: 2800,
   },
 ];
 
@@ -287,21 +279,6 @@ export default function IntroLoader() {
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
               className="flex flex-col items-center justify-center w-full"
             >
-              {/* Optional Category / Subheading Badge */}
-              {currentFrame.tag && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.05 }}
-                  className="flex items-center gap-2 mb-6 px-3.5 py-1 rounded-full border border-yellow-500/30 bg-yellow-500/10 backdrop-blur-md"
-                >
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#facc15] animate-pulse" />
-                  <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.25em] text-[#facc15]">
-                    {currentFrame.tag}
-                  </span>
-                </motion.div>
-              )}
-
               {/* RENDER BY FRAME TYPE */}
 
               {/* 1. SINGLE PHRASE (Hook, Promise, Purpose, Reveal, Textbooks, Classrooms, Just People) */}

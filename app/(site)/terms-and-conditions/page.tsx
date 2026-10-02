@@ -116,8 +116,8 @@ export default function TermsAndConditionsPage() {
                 </h2>
               </div>
               <p className="text-base sm:text-lg text-neutral-700">
-                All content published on this website and podcast—including but not limited to audio 
-                episodes, video clips, text, graphics, logos, and &ldquo;The Classrooms&rdquo; curriculum concepts—is 
+                All content published on this website and podcast - including but not limited to audio 
+                episodes, video clips, text, graphics, logos, and &ldquo;The Classrooms&rdquo; curriculum concepts - is 
                 the exclusive property of The Everyday University and MC DASI. You may not reproduce, 
                 distribute, or create derivative works from our content without explicit written permission. 
                 Sharing our content via official social media links or embedding our public podcast players 
@@ -171,8 +171,8 @@ export default function TermsAndConditionsPage() {
               </div>
               <div className="rounded-2xl border border-neutral-200 bg-neutral-50 p-6 sm:p-8">
                 <p className="text-base sm:text-lg text-neutral-700">
-                  The content provided by The Everyday University—including episodes, masterclasses, and 
-                  community discussions—is for informational and educational purposes only. It does not 
+                  The content provided by The Everyday University - including episodes, masterclasses, and 
+                  community discussions - is for informational and educational purposes only. It does not 
                   constitute professional business, financial, legal, or medical advice. We make no guarantees 
                   regarding the accuracy, completeness, or practical outcome of the strategies and lessons 
                   discussed by our host or guests. You are solely responsible for how you choose to apply this 

@@ -28,12 +28,22 @@ const ITEMS_PER_PAGE = 6; // 2 more rows per click
 interface ClassroomFeedProps {
   episodes: ClassroomEpisode[];
   activePillar?: PillarId;
+  onSelectPillar?: (pillar: PillarId) => void;
   onPlayVideo?: (videoUrl: string, title: string) => void;
 }
+
+const CATEGORY_TABS: { id: PillarId; label: string }[] = [
+  { id: "all", label: "All Episodes" },
+  { id: "business", label: "Business & Entrepreneurship" },
+  { id: "resilience", label: "Resilience" },
+  { id: "arts-culture", label: "Arts & Storytelling" },
+];
 
 export default function ClassroomFeed({
   episodes = [],
   activePillar = "all",
+  onSelectPillar,
+  onPlayVideo,
 }: ClassroomFeedProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
@@ -64,7 +74,7 @@ export default function ClassroomFeed({
   const filteredEpisodes = useMemo(() => {
     if (!Array.isArray(episodes)) return [];
 
-    return episodes.filter((ep) => {
+    const matched = episodes.filter((ep) => {
       // 1. Text Search filter
       const q = searchQuery.toLowerCase().trim();
       const matchesSearch =
@@ -74,25 +84,21 @@ export default function ClassroomFeed({
         ep.category?.toLowerCase().includes(q) ||
         ep.description?.toLowerCase().includes(q);
 
-      // 2. Pillar filter (linked when activePillar is selected)
+      // 2. Pillar filter
       let matchesPillar = true;
       if (activePillar && activePillar !== "all") {
-        const p = activePillar.toLowerCase().replace(/-/g, " ");
-        const words = p.split(" ").filter((w) => w.length > 2);
-        const title = ep.title?.toLowerCase() || "";
-        const cat = ep.category?.toLowerCase() || "";
-        const desc = ep.description?.toLowerCase() || "";
-
         matchesPillar =
-          cat.includes(p) ||
-          title.includes(p) ||
-          words.some((w) => title.includes(w)) ||
-          desc.includes(p) ||
-          words.some((w) => desc.includes(w));
+          ep.department === activePillar ||
+          Boolean(ep.category && ep.category.toLowerCase().includes(activePillar.replace(/-/g, " "))) ||
+          (activePillar === "business" && /business|entrepreneur|finance|invest|startup|company|career|builder|sales|scale|strategy|money|realtor|real estate|pharmacist/i.test(`${ep.department || ""} ${ep.category || ""} ${ep.title || ""}`)) ||
+          (activePillar === "resilience" && /purpose|marriage|autism|roots|identity|legacy|sacrifice|smile|teeth|extraction|powerhouse|struggle|fail|pain|resilience|overcome|survive|tough|mindset|courage|loss|grief|health|discipline|action|psychology|journey/i.test(`${ep.department || ""} ${ep.category || ""} ${ep.title || ""}`)) ||
+          (activePillar === "arts-culture" && /art|story|culture|creative|film|music|media|creator|vision|theatre|author|acting|comedian|comedy|fashion|crafting|style|menswear/i.test(`${ep.department || ""} ${ep.category || ""} ${ep.title || ""}`));
       }
 
       return matchesSearch && matchesPillar;
     });
+
+    return matched;
   }, [episodes, searchQuery, activePillar]);
 
   const visibleEpisodes = useMemo(() => {
@@ -105,12 +111,35 @@ export default function ClassroomFeed({
     setVisibleCount((prev) => prev + ITEMS_PER_PAGE);
   };
 
+  const activeTabLabel =
+    CATEGORY_TABS.find((t) => t.id === activePillar)?.label || "All Episodes";
+
   return (
     <section
       id="classroom-feed"
       className="relative w-full bg-black py-12 sm:py-16 px-4 sm:px-8 md:px-12 text-white border-t border-white/10"
     >
-      <div className="w-full">
+      <div className="w-full space-y-6">
+        {/* Category Pills Navigation */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+          {CATEGORY_TABS.map((tab) => {
+            const isActive = (activePillar || "all") === tab.id;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => onSelectPillar && onSelectPillar(tab.id)}
+                className={`px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-300 cursor-pointer ${
+                  isActive
+                    ? "bg-[#facc15] text-black shadow-[0_0_15px_rgba(250,204,21,0.3)] font-bold"
+                    : "bg-zinc-900 border border-white/15 text-neutral-300 hover:text-white hover:border-white/30"
+                }`}
+              >
+                {tab.label}
+              </button>
+            );
+          })}
+        </div>
+
         {/* Clean Search Bar & View Controls Toolbar */}
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4 pb-6 sm:pb-8 border-b border-white/10">
           {/* Search Input */}
@@ -122,7 +151,7 @@ export default function ClassroomFeed({
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search masterclasses, topics, or keywords..."
+                placeholder="Search episodes, topics, or keywords..."
                 className="w-full bg-transparent pl-11 pr-20 py-3 text-sm text-white placeholder-neutral-500 font-sans focus:outline-none"
               />
               <div className="absolute right-3.5 flex items-center gap-1.5">
@@ -146,7 +175,7 @@ export default function ClassroomFeed({
           {/* Right Controls: Count & View Switcher */}
           <div className="flex items-center justify-between sm:justify-end gap-4">
             <span className="text-xs font-mono uppercase tracking-widest text-neutral-400">
-              Lessons (
+              Episodes (
               <span className="text-[#facc15] font-bold">
                 {filteredEpisodes.length}
               </span>
@@ -184,11 +213,11 @@ export default function ClassroomFeed({
         {filteredEpisodes.length === 0 ? (
           <div className="py-24 text-center">
             <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-zinc-900 border border-white/10 text-2xl text-[#facc15] mb-4">
-              📚
+              🎙️
             </div>
-            <h3 className="text-xl font-bold text-white">No lessons match your search</h3>
+            <h3 className="text-xl font-bold text-white">No episodes match your search</h3>
             <p className="mt-2 text-sm text-neutral-400 max-w-sm mx-auto">
-              Try adjusting your keyword search to see all masterclasses.
+              Try adjusting your keyword search to see all episodes.
             </p>
             {searchQuery && (
               <button
@@ -210,7 +239,8 @@ export default function ClassroomFeed({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: (idx % 6) * 0.06 }}
-                className="group relative flex flex-col justify-between overflow-hidden rounded-3xl bg-zinc-950/90 border border-white/10 hover:border-[#facc15]/40 transition-all duration-300 shadow-xl"
+                onClick={() => onPlayVideo && onPlayVideo(ep.youtubeId, ep.title)}
+                className="group relative flex flex-col justify-between overflow-hidden rounded-3xl bg-zinc-950/90 border border-white/10 hover:border-[#facc15]/40 transition-all duration-300 shadow-xl cursor-pointer"
               >
                 <div>
                   {/* Thumbnail Stage */}
@@ -226,7 +256,7 @@ export default function ClassroomFeed({
 
                     {/* Duration Badge */}
                     <span className="absolute bottom-3 right-3 rounded-md bg-black/80 backdrop-blur-md px-2.5 py-0.5 text-[10px] font-mono font-bold text-white border border-white/10">
-                      {ep.duration || "Lesson"}
+                      {ep.duration || "Episode"}
                     </span>
                   </div>
 
@@ -234,10 +264,10 @@ export default function ClassroomFeed({
                   <div className="p-6">
                     {/* Date / Episode tag */}
                     <div className="flex items-center justify-between gap-2 mb-2.5">
-                      <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-[#facc15]">
-                        {ep.podcast || "The Everyday University"}
+                      <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-[#facc15] truncate">
+                        {ep.category || ep.podcast || "The Everyday University"}
                       </span>
-                      <span className="text-[11px] text-neutral-400 font-semibold">
+                      <span className="text-[11px] text-neutral-400 font-semibold shrink-0">
                         {ep.date}
                       </span>
                     </div>
@@ -253,6 +283,16 @@ export default function ClassroomFeed({
                         {ep.description}
                       </p>
                     )}
+
+                    {/* Watch Episode Action Button */}
+                    <div className="mt-5 pt-4 border-t border-white/10 flex items-center justify-between">
+                      <span className="text-xs font-bold text-[#facc15] group-hover:underline flex items-center gap-1.5">
+                        Watch Episode ↗
+                      </span>
+                      <span className="text-[11px] font-mono text-neutral-400">
+                        Play Now
+                      </span>
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -269,7 +309,8 @@ export default function ClassroomFeed({
                 initial={{ opacity: 0, x: -15 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.35, delay: (idx % 6) * 0.05 }}
-                className="group flex flex-col sm:flex-row items-stretch sm:items-center gap-5 rounded-2xl bg-zinc-950/90 p-4 sm:p-5 border border-white/10 hover:border-[#facc15]/40 transition-all shadow-lg"
+                onClick={() => onPlayVideo && onPlayVideo(ep.youtubeId, ep.title)}
+                className="group flex flex-col sm:flex-row items-stretch sm:items-center gap-5 rounded-2xl bg-zinc-950/90 p-4 sm:p-5 border border-white/10 hover:border-[#facc15]/40 transition-all shadow-lg cursor-pointer"
               >
                 {/* Thumbnail */}
                 <div className="relative h-32 sm:h-24 sm:w-40 shrink-0 rounded-xl overflow-hidden bg-neutral-900">
@@ -303,6 +344,13 @@ export default function ClassroomFeed({
                     </p>
                   )}
                 </div>
+
+                {/* Action */}
+                <div className="shrink-0 flex items-center">
+                  <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/5 border border-white/15 text-xs font-bold text-white group-hover:bg-[#facc15] group-hover:text-black transition-all">
+                    Watch Episode
+                  </span>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -315,11 +363,11 @@ export default function ClassroomFeed({
               onClick={handleViewMore}
               className="group relative inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-zinc-900 border border-white/20 hover:border-[#facc15] hover:bg-[#facc15] text-white hover:text-black font-bold text-sm transition-all duration-300 shadow-xl hover:scale-105 active:scale-95 cursor-pointer"
             >
-              <span>View More Lessons</span>
+              <span>View More Episodes</span>
               <ChevronDown className="w-4 h-4 transition-transform duration-300 group-hover:translate-y-0.5" />
             </button>
             <span className="text-xs font-mono text-neutral-500">
-              Showing {visibleEpisodes.length} of {filteredEpisodes.length} masterclasses
+              Showing {visibleEpisodes.length} of {filteredEpisodes.length} episodes
             </span>
           </div>
         )}

@@ -6,6 +6,7 @@ export const VIDEOS_QUERY = groq`
     title,
     youtubeUrl,
     podcast,
+    category,
     date,
     duration,
     "thumbnailUrl": thumbnail.asset->url,
@@ -19,6 +20,7 @@ export interface SanityVideo {
   title: string
   youtubeUrl: string
   podcast?: string
+  category?: string
   date?: string
   duration?: string
   thumbnailUrl?: string
