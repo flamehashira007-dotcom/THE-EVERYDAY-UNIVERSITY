@@ -22,7 +22,7 @@ const FRAMES: FrameItem[] = [
     frameNum: "01",
     type: "single",
     text: "EVERYONE HAS A STORY.",
-    duration: 2000,
+    duration: 2600,
   },
   {
     id: 2,
@@ -30,7 +30,7 @@ const FRAMES: FrameItem[] = [
     type: "single",
     text: "EVERY STORY HAS A LESSON.",
     highlightWords: ["LESSON."],
-    duration: 2000,
+    duration: 2600,
   },
   {
     id: 3,
@@ -38,28 +38,28 @@ const FRAMES: FrameItem[] = [
     type: "single",
     text: "AND EVERY LESSON CAN CHANGE A LIFE.",
     highlightWords: ["CHANGE", "A", "LIFE."],
-    duration: 2200,
+    duration: 2800,
   },
   {
     id: 4,
     frameNum: "04",
     type: "question",
     text: "What if the world itself was a university?",
-    duration: 2400,
+    duration: 3000,
   },
   {
     id: 5,
     frameNum: "05",
     type: "stacked",
     lines: ["No classrooms.", "No exams.", "No tuition."],
-    duration: 2400,
+    duration: 3000,
   },
   {
     id: 6,
     frameNum: "06",
     type: "single",
     text: "Just people.",
-    duration: 1800,
+    duration: 2400,
   },
   {
     id: 7,
@@ -70,7 +70,7 @@ const FRAMES: FrameItem[] = [
       "People who have lost something.",
       "People who started with nothing.",
     ],
-    duration: 2700,
+    duration: 3400,
   },
   {
     id: 8,
@@ -81,7 +81,7 @@ const FRAMES: FrameItem[] = [
       "People who turned pain into purpose.",
       "People who dared to dream.",
     ],
-    duration: 2700,
+    duration: 3400,
   },
   {
     id: 9,
@@ -89,7 +89,7 @@ const FRAMES: FrameItem[] = [
     type: "single",
     text: "THESE ARE OUR PROFESSORS.",
     highlightWords: ["PROFESSORS."],
-    duration: 2000,
+    duration: 2600,
   },
   {
     id: 10,
@@ -97,7 +97,7 @@ const FRAMES: FrameItem[] = [
     type: "single",
     text: "THEIR LIVES ARE OUR TEXTBOOKS.",
     highlightWords: ["TEXTBOOKS."],
-    duration: 2000,
+    duration: 2600,
   },
   {
     id: 11,
@@ -105,21 +105,21 @@ const FRAMES: FrameItem[] = [
     type: "single",
     text: "THEIR STORIES ARE OUR CLASSROOMS.",
     highlightWords: ["CLASSROOMS."],
-    duration: 2200,
+    duration: 2800,
   },
   {
     id: 12,
     frameNum: "12",
     type: "brand",
     text: "THE EVERYDAY UNIVERSITY",
-    duration: 2500,
+    duration: 3200,
   },
   {
     id: 13,
     frameNum: "13",
     type: "tagline",
     text: "Where legends speak and dreams take flight.",
-    duration: 2800,
+    duration: 3500,
   },
 ];
 
