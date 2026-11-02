@@ -46,10 +46,10 @@ export const metadata: Metadata = {
       "Their stories are our classrooms. Exploring authentic life lessons, entrepreneurship journeys, and transformative conversations.",
     images: [
       {
-        url: "/dasi.png",
-        width: 1200,
-        height: 630,
-        alt: "The Everyday University - Official Podcast",
+        url: "/logo.jpeg",
+        width: 2048,
+        height: 1716,
+        alt: "The Everyday University - Official Podcast & Media Network",
       },
     ],
   },
@@ -59,15 +59,15 @@ export const metadata: Metadata = {
     description:
       "Their stories are our classrooms. Exploring authentic life lessons and transformative conversations.",
     creator: "@everydayunivers",
-    images: ["/dasi.png"],
+    images: ["/logo.jpeg"],
   },
   icons: {
     icon: [
       { url: "/favicon.ico" },
-      { url: "/The Everyday University LOGO2.ico" },
+      { url: "/logo.jpeg" },
     ],
     shortcut: ["/favicon.ico"],
-    apple: ["/The Everyday University LOGO2.ico"],
+    apple: ["/logo.jpeg"],
   },
   robots: {
     index: true,
@@ -100,7 +100,7 @@ const jsonLd = {
       "@id": "https://theeverydayuniversity.com/#organization",
       "name": "The Everyday University",
       "url": "https://theeverydayuniversity.com",
-      "logo": "https://theeverydayuniversity.com/dasi.png",
+      "logo": "https://theeverydayuniversity.com/logo.jpeg",
       "sameAs": [
         "https://www.youtube.com/@TheEverydayUniversity",
         "https://open.spotify.com/show/1vLkx0lHA6eOtqFjiOKRR1",
