@@ -11,7 +11,7 @@ const bebasNeue = Bebas_Neue({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://theeverydayuniversity.com"),
+  metadataBase: new URL("https://www.theeverydayuniversity.com"),
   title: {
     default: "The Everyday University | Official Podcast & Media Network",
     template: "%s | The Everyday University",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     "Podcast Network",
     "Classrooms Without Walls",
   ],
-  authors: [{ name: "Dasi", url: "https://theeverydayuniversity.com" }],
+  authors: [{ name: "Dasi", url: "https://www.theeverydayuniversity.com" }],
   creator: "The Everyday University",
   publisher: "The Everyday University",
   formatDetection: {
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://theeverydayuniversity.com",
+    url: "https://www.theeverydayuniversity.com",
     siteName: "The Everyday University",
     title: "The Everyday University | Official Podcast & Media Network",
     description:
@@ -88,20 +88,20 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": "https://theeverydayuniversity.com/#website",
-      "url": "https://theeverydayuniversity.com",
+      "@id": "https://www.theeverydayuniversity.com/#website",
+      "url": "https://www.theeverydayuniversity.com",
       "name": "The Everyday University",
       "description": "Their stories are our classrooms. Official podcast and media network.",
       "publisher": {
-        "@id": "https://theeverydayuniversity.com/#organization",
+        "@id": "https://www.theeverydayuniversity.com/#organization",
       },
     },
     {
       "@type": "Organization",
-      "@id": "https://theeverydayuniversity.com/#organization",
+      "@id": "https://www.theeverydayuniversity.com/#organization",
       "name": "The Everyday University",
-      "url": "https://theeverydayuniversity.com",
-      "logo": "https://theeverydayuniversity.com/dasi-cutout-preview.png",
+      "url": "https://www.theeverydayuniversity.com",
+      "logo": "https://www.theeverydayuniversity.com/dasi-cutout-preview.png",
       "sameAs": [
         "https://www.youtube.com/@TheEverydayUniversity",
         "https://open.spotify.com/show/1vLkx0lHA6eOtqFjiOKRR1",
@@ -113,9 +113,9 @@ const jsonLd = {
     },
     {
       "@type": "PodcastSeries",
-      "@id": "https://theeverydayuniversity.com/#podcast",
+      "@id": "https://www.theeverydayuniversity.com/#podcast",
       "name": "The Everyday University",
-      "url": "https://theeverydayuniversity.com",
+      "url": "https://www.theeverydayuniversity.com",
       "description": "Their stories are our classrooms. A podcast exploring raw human journeys, struggles, and life lessons.",
       "author": {
         "@type": "Person",
