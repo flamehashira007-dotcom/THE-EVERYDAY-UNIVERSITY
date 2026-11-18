@@ -22,7 +22,7 @@ const FRAMES: FrameItem[] = [
     frameNum: "01",
     type: "single",
     text: "EVERYONE HAS A STORY.",
-    duration: 2600,
+    duration: 4800,
   },
   {
     id: 2,
@@ -30,7 +30,7 @@ const FRAMES: FrameItem[] = [
     type: "single",
     text: "EVERY STORY HAS A LESSON.",
     highlightWords: ["LESSON."],
-    duration: 2600,
+    duration: 4800,
   },
   {
     id: 3,
@@ -38,28 +38,28 @@ const FRAMES: FrameItem[] = [
     type: "single",
     text: "AND EVERY LESSON CAN CHANGE A LIFE.",
     highlightWords: ["CHANGE", "A", "LIFE."],
-    duration: 2800,
+    duration: 5200,
   },
   {
     id: 4,
     frameNum: "04",
     type: "question",
     text: "What if the world itself was a university?",
-    duration: 3000,
+    duration: 5600,
   },
   {
     id: 5,
     frameNum: "05",
     type: "stacked",
     lines: ["No classrooms.", "No exams.", "No tuition."],
-    duration: 3000,
+    duration: 5600,
   },
   {
     id: 6,
     frameNum: "06",
     type: "single",
     text: "Just people.",
-    duration: 2400,
+    duration: 4200,
   },
   {
     id: 7,
@@ -70,7 +70,7 @@ const FRAMES: FrameItem[] = [
       "People who have lost something.",
       "People who started with nothing.",
     ],
-    duration: 3400,
+    duration: 6800,
   },
   {
     id: 8,
@@ -81,7 +81,7 @@ const FRAMES: FrameItem[] = [
       "People who turned pain into purpose.",
       "People who dared to dream.",
     ],
-    duration: 3400,
+    duration: 6800,
   },
   {
     id: 9,
@@ -89,7 +89,7 @@ const FRAMES: FrameItem[] = [
     type: "single",
     text: "THESE ARE OUR PROFESSORS.",
     highlightWords: ["PROFESSORS."],
-    duration: 2600,
+    duration: 4800,
   },
   {
     id: 10,
@@ -97,7 +97,7 @@ const FRAMES: FrameItem[] = [
     type: "single",
     text: "THEIR LIVES ARE OUR TEXTBOOKS.",
     highlightWords: ["TEXTBOOKS."],
-    duration: 2600,
+    duration: 4800,
   },
   {
     id: 11,
@@ -105,21 +105,21 @@ const FRAMES: FrameItem[] = [
     type: "single",
     text: "THEIR STORIES ARE OUR CLASSROOMS.",
     highlightWords: ["CLASSROOMS."],
-    duration: 2800,
+    duration: 5200,
   },
   {
     id: 12,
     frameNum: "12",
     type: "brand",
     text: "THE EVERYDAY UNIVERSITY",
-    duration: 3200,
+    duration: 6200,
   },
   {
     id: 13,
     frameNum: "13",
     type: "tagline",
     text: "Where legends speak and dreams take flight.",
-    duration: 3500,
+    duration: 6500,
   },
 ];
 
@@ -174,7 +174,7 @@ export default function IntroLoader() {
 
     const timer = setTimeout(() => {
       finishIntro();
-    }, 1100);
+    }, 1800);
 
     return () => clearTimeout(timer);
   }, [introPhase, finishIntro]);
@@ -195,7 +195,7 @@ export default function IntroLoader() {
       <motion.div
         initial={{ y: 0 }}
         animate={{ y: isOpening ? "-100%" : 0 }}
-        transition={{ duration: 1.05, ease: easeCustom }}
+        transition={{ duration: 1.7, ease: easeCustom }}
         className="absolute top-0 inset-x-0 h-1/2 bg-[#08080a] shadow-2xl z-10"
       >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_100%,rgba(250,204,21,0.06),transparent_70%)]" />
@@ -205,7 +205,7 @@ export default function IntroLoader() {
       <motion.div
         initial={{ y: 0 }}
         animate={{ y: isOpening ? "100%" : 0 }}
-        transition={{ duration: 1.05, ease: easeCustom }}
+        transition={{ duration: 1.7, ease: easeCustom }}
         className="absolute bottom-0 inset-x-0 h-1/2 bg-[#08080a] shadow-2xl z-10"
       >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(250,204,21,0.06),transparent_70%)]" />
@@ -242,7 +242,7 @@ export default function IntroLoader() {
             className="h-full bg-gradient-to-r from-yellow-500 to-amber-300 shadow-[0_0_10px_rgba(250,204,21,0.6)]"
             initial={{ width: "0%" }}
             animate={{ width: `${((currentFrameIndex + 1) / FRAMES.length) * 100}%` }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
           />
         </div>
       )}
@@ -274,9 +274,9 @@ export default function IntroLoader() {
                 y: -20,
                 scale: 1.02,
                 filter: "blur(10px)",
-                transition: { duration: 0.35, ease: [0.32, 0, 0.67, 0] },
+                transition: { duration: 0.55, ease: [0.32, 0, 0.67, 0] },
               }}
-              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
               className="flex flex-col items-center justify-center w-full"
             >
               {/* RENDER BY FRAME TYPE */}
@@ -295,8 +295,8 @@ export default function IntroLoader() {
                           initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
                           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                           transition={{
-                            duration: 0.45,
-                            delay: 0.1 + idx * 0.07,
+                            duration: 0.7,
+                            delay: 0.2 + idx * 0.12,
                             ease: [0.22, 1, 0.36, 1],
                           }}
                           className={
@@ -353,8 +353,8 @@ export default function IntroLoader() {
                       initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
                       animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                       transition={{
-                        duration: 0.45,
-                        delay: 0.15 + idx * 0.18,
+                        duration: 0.7,
+                        delay: 0.25 + idx * 0.28,
                         ease: [0.22, 1, 0.36, 1],
                       }}
                       className="flex items-center gap-3 sm:gap-4"
@@ -395,8 +395,8 @@ export default function IntroLoader() {
                         initial={{ opacity: 0, y: 40, rotateX: -30 }}
                         animate={{ opacity: 1, y: 0, rotateX: 0 }}
                         transition={{
-                          duration: 0.6,
-                          delay: 0.15 + idx * 0.12,
+                          duration: 0.85,
+                          delay: 0.25 + idx * 0.2,
                           ease: [0.22, 1, 0.36, 1],
                         }}
                         className={
