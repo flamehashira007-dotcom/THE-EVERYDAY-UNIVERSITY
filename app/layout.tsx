@@ -46,9 +46,9 @@ export const metadata: Metadata = {
       "Their stories are our classrooms. Exploring authentic life lessons, entrepreneurship journeys, and transformative conversations.",
     images: [
       {
-        url: "/dasi-cutout-preview.png?v=2",
-        width: 800,
-        height: 800,
+        url: "/dasi-cutout-preview.png?v=3",
+        width: 1200,
+        height: 630,
         type: "image/png",
         alt: "The Everyday University - Dasi",
       },
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     description:
       "Their stories are our classrooms. Exploring authentic life lessons and transformative conversations.",
     creator: "@everydayunivers",
-    images: ["/dasi-cutout-preview.png?v=2"],
+    images: ["/dasi-cutout-preview.png?v=3"],
   },
   icons: {
     icon: [
