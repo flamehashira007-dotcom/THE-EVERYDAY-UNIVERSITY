@@ -46,7 +46,7 @@ export const metadata: Metadata = {
       "Their stories are our classrooms. Exploring authentic life lessons, entrepreneurship journeys, and transformative conversations.",
     images: [
       {
-        url: "/dasi-cutout-preview.png",
+        url: "/dasi-cutout-preview.png?v=2",
         width: 800,
         height: 800,
         type: "image/png",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     description:
       "Their stories are our classrooms. Exploring authentic life lessons and transformative conversations.",
     creator: "@everydayunivers",
-    images: ["/dasi-cutout-preview.png"],
+    images: ["/dasi-cutout-preview.png?v=2"],
   },
   icons: {
     icon: [
