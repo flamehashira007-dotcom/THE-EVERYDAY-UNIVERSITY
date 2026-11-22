@@ -65,10 +65,10 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico" },
-      { url: "/dasi-cutout-preview.png" },
+      { url: "/logo.jpeg" },
     ],
     shortcut: ["/favicon.ico"],
-    apple: ["/dasi-cutout-preview.png"],
+    apple: ["/logo.jpeg"],
   },
   robots: {
     index: true,
@@ -101,7 +101,7 @@ const jsonLd = {
       "@id": "https://www.theeverydayuniversity.com/#organization",
       "name": "The Everyday University",
       "url": "https://www.theeverydayuniversity.com",
-      "logo": "https://www.theeverydayuniversity.com/dasi-cutout-preview.png",
+      "logo": "https://www.theeverydayuniversity.com/logo.jpeg",
       "sameAs": [
         "https://www.youtube.com/@TheEverydayUniversity",
         "https://open.spotify.com/show/1vLkx0lHA6eOtqFjiOKRR1",
